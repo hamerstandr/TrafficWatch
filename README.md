@@ -7,4 +7,4 @@ Watch Traffic And Monitor Network
 
 .NET 4.6.1 and WinPcap
 
-![Screen](https://raw.githubusercontent.com/hamerstandr/TrafficWatch/master/img/Screen.png?token=AD4F2ADFEIU3KKMHMM6S6RC42TYUO)
+![Screen](https://github.com/hamerstandr/TrafficWatch/blob/master/img/Screen.png?raw=true)
