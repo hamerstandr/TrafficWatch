@@ -1,0 +1,22 @@
+﻿<Window x:Class="TrafficWatch.View.Monitor.MonitorProcess"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrafficWatch.View.Monitor"
+        mc:Ignorable="d"
+        Title="MonytorProcess" Height="273.364" Width="507.71">
+    <Grid>
+        <Image x:Name="Icon" HorizontalAlignment="Left" Height="32" Margin="6,10,0,0" VerticalAlignment="Top" Width="32"/>
+        <TextBlock x:Name="Names" HorizontalAlignment="Left" Margin="43,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
+
+        <TextBlock x:Name="up"  Height="30" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,45,0,0" Width="107"/>
+        <TextBlock x:Name="down"  Height="30" TextWrapping="Wrap" Margin="80,80,0,0" HorizontalAlignment="Left" Width="107" VerticalAlignment="Top"/>
+
+        <Label Content="Upload" Height="30" Margin="0,45,425,167"/>
+        <Label Content="Download"  Height="30" Margin="0,80,425,132"/>
+
+
+
+    </Grid>
+</Window>

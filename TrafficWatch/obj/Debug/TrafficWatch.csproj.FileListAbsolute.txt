@@ -3,7 +3,6 @@ C:\Intel\Progect\TrafficWatch\TrafficWatch\bin\Debug\TrafficWatch.exe
 C:\Intel\Progect\TrafficWatch\TrafficWatch\bin\Debug\TrafficWatch.pdb
 C:\Intel\Progect\TrafficWatch\TrafficWatch\bin\Debug\PacketDotNet.dll
 C:\Intel\Progect\TrafficWatch\TrafficWatch\bin\Debug\SharpPcap.dll
-C:\Intel\Progect\TrafficWatch\TrafficWatch\obj\Debug\TrafficWatch.csprojAssemblyReference.cache
 C:\Intel\Progect\TrafficWatch\TrafficWatch\obj\Debug\Control\SystemThemeColors.baml
 C:\Intel\Progect\TrafficWatch\TrafficWatch\obj\Debug\View\Detail\DetailWindow.baml
 C:\Intel\Progect\TrafficWatch\TrafficWatch\obj\Debug\View\Detail\ProcessDetailWindow.baml
@@ -32,3 +31,6 @@ C:\Intel\Progect\TrafficWatch\TrafficWatch\obj\Debug\TrafficWatch.csproj.CoreCom
 C:\Intel\Progect\TrafficWatch\TrafficWatch\obj\Debug\TrafficWatch.csproj.CopyComplete
 C:\Intel\Progect\TrafficWatch\TrafficWatch\obj\Debug\TrafficWatch.exe
 C:\Intel\Progect\TrafficWatch\TrafficWatch\obj\Debug\TrafficWatch.pdb
+C:\Intel\Progect\TrafficWatch\TrafficWatch\obj\Debug\View\Monitor\MonitorProcess.g.cs
+C:\Intel\Progect\TrafficWatch\TrafficWatch\obj\Debug\View\Monitor\MonitorProcess.baml
+C:\Intel\Progect\TrafficWatch\TrafficWatch\obj\Debug\TrafficWatch.csprojAssemblyReference.cache

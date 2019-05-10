@@ -106,5 +106,12 @@ namespace TrafficWatch.View.Detail
                 }));
             }
         }
+
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            Monitor.MonitorProcess w = new Monitor.MonitorProcess(process.ID);
+            w.Show();
+        }
     }
 }

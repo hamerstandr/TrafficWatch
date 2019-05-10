@@ -92,6 +92,9 @@
     </Compile>
     <Compile Include="View\Detail\ProcessView.cs" />
     <Compile Include="View\History.cs" />
+    <Compile Include="View\Monitor\MonitorProcess.xaml.cs">
+      <DependentUpon>MonitorProcess.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PopWindow.xaml.cs">
       <DependentUpon>PopWindow.xaml</DependentUpon>
     </Compile>
@@ -136,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Detail\ProcessDetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Monitor\MonitorProcess.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -49,11 +49,14 @@
         </DockPanel>
 
         <TextBlock Name="ProcessPath" Grid.Row="2" Grid.Column="1" Style="{StaticResource RightLabel}"  />
-        <Button Name="OpenButton" Grid.Row="3" Grid.Column="1" Style="{StaticResource RightLabel}" HorizontalAlignment="Left">
+        <Button Name="OpenButton" Grid.Row="3" Grid.Column="1" Style="{StaticResource RightLabel}" HorizontalAlignment="Left" Click="OpenButton_Click">
             <DockPanel>
                 <Image Name="OpenButtonImage" VerticalAlignment="Center" Height="{Binding ElementName=OpenButtonText, Path=FontSize}"/>
                 <TextBlock Name="OpenButtonText" VerticalAlignment="Center" Text="Open Path In FileExplorer" />
             </DockPanel>
         </Button>
+        <Button Name="MonitorButton" Content="Monitor Process" Grid.Row="3" Grid.Column="1" Style="{StaticResource RightLabel}" HorizontalAlignment="Left" Margin="166,5,0,6" Click="OpenButton_Click"/>
+
+
     </Grid>
 </Window>

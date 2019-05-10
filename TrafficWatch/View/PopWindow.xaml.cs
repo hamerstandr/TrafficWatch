@@ -300,6 +300,7 @@ namespace TrafficWatch
             {
                 detailWindow.NewData(statistics.items, statistics.timeSpan);
             }
+            View.Monitor.MonitorProcess.Me?.NewData(statistics.items, statistics.timeSpan);
         }
         //
         private int uCallBackMsg, taskBarCreatedMsg;

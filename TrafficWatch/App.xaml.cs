@@ -94,6 +94,7 @@ namespace TrafficWatch
             Dispatcher.Invoke(new Action(() =>
             {
                 mainWindow.NewData(statistics);
+                
                 _History.Add(statistics, DateTime.Now);
                 if (index == 300)//5 minet
                 {
