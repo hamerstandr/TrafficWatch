@@ -1,0 +1,14 @@
+﻿<Application x:Class="TrafficWatch.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TrafficWatch"
+              Startup="Application_Startup"><!--StartupUri="View/PopWindow.xaml"-->
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Control/SystemThemeColors.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+            
+    </Application.Resources>
+</Application>
