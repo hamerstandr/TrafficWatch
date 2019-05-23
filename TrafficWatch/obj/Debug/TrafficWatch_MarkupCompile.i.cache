@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Intel\Progect\TrafficWatch\TrafficWatch\App.xaml
-10-919732663
+12886959777
 
-36544639421
-17916218320
-Control\MenuThame.xaml;Control\SystemThemeColors.xaml;MainWindow.xaml;View\Detail\DetailWindow.xaml;View\Detail\historyWindow.xaml;View\Detail\ProcessDetailWindow.xaml;View\Monitor\MonitorProcess.xaml;View\PopWindow.xaml;View\WelcomeWindow.xaml;View\WindowSetting.xaml;
+391305359702
+19-666442683
+Control\ChartTraffic.xaml;Control\MenuThame.xaml;Control\SystemThemeColors.xaml;MainWindow.xaml;View\Detail\DetailWindow.xaml;View\Detail\historyWindow.xaml;View\Detail\ProcessDetailWindow.xaml;View\Monitor\MonitorProcess.xaml;View\PopWindow.xaml;View\Toster.xaml;View\WelcomeWindow.xaml;View\WindowSetting.xaml;
 
 True
 

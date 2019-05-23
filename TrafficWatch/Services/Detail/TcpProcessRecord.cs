@@ -30,7 +30,7 @@ namespace TrafficWatch.Services.Detail
             List<TcpProcessRecord> tcpTableRecords = new List<TcpProcessRecord>(100);
 
             // Getting the size of TCP table, that is returned in 'bufferSize' variable.
-            uint result = WinAPIWrapper.GetExtendedTcpTable(IntPtr.Zero, ref bufferSize, true, AF_INET,
+            _ = WinAPIWrapper.GetExtendedTcpTable(IntPtr.Zero, ref bufferSize, true, AF_INET,
                 TcpTableClass.TCP_TABLE_OWNER_PID_ALL);
 
             // Allocating memory from the unmanaged memory of the process by using the
@@ -42,7 +42,7 @@ namespace TrafficWatch.Services.Detail
                 // The size of the table returned in 'bufferSize' variable in previous
                 // call must be used in this subsequent call to 'GetExtendedTcpTable'
                 // function in order to successfully retrieve the table.
-                result = WinAPIWrapper.GetExtendedTcpTable(tcpTableRecordsPtr, ref bufferSize, true,
+                uint result = WinAPIWrapper.GetExtendedTcpTable(tcpTableRecordsPtr, ref bufferSize, true,
                     AF_INET, TcpTableClass.TCP_TABLE_OWNER_PID_ALL);
 
                 // Non-zero value represent the function 'GetExtendedTcpTable' failed,
@@ -80,14 +80,14 @@ namespace TrafficWatch.Services.Detail
                     tableRowPtr = (IntPtr)((long)tableRowPtr + Marshal.SizeOf(tcpRow));
                 }
             }
-            catch (OutOfMemoryException outOfMemoryException)
-            {
+            //catch (OutOfMemoryException outOfMemoryException)
+            //{
 
-            }
-            catch (Exception exception)
-            {
+            //}
+            //catch (Exception exception)
+            //{
 
-            }
+            //}
             finally
             {
                 Marshal.FreeHGlobal(tcpTableRecordsPtr);
@@ -113,7 +113,7 @@ namespace TrafficWatch.Services.Detail
             List<UdpProcessRecord> udpTableRecords = new List<UdpProcessRecord>(100);
 
             // Getting the size of UDP table, that is returned in 'bufferSize' variable.
-            uint result = WinAPIWrapper.GetExtendedUdpTable(IntPtr.Zero, ref bufferSize, true,
+            _ = WinAPIWrapper.GetExtendedUdpTable(IntPtr.Zero, ref bufferSize, true,
                 AF_INET, UdpTableClass.UDP_TABLE_OWNER_PID);
 
             // Allocating memory from the unmanaged memory of the process by using the
@@ -125,7 +125,7 @@ namespace TrafficWatch.Services.Detail
                 // The size of the table returned in 'bufferSize' variable in previous
                 // call must be used in this subsequent call to 'GetExtendedUdpTable'
                 // function in order to successfully retrieve the table.
-                result = WinAPIWrapper.GetExtendedUdpTable(udpTableRecordPtr, ref bufferSize, true,
+                uint result = WinAPIWrapper.GetExtendedUdpTable(udpTableRecordPtr, ref bufferSize, true,
                     AF_INET, UdpTableClass.UDP_TABLE_OWNER_PID);
 
                 // Non-zero value represent the function 'GetExtendedUdpTable' failed,
@@ -153,14 +153,14 @@ namespace TrafficWatch.Services.Detail
                     tableRowPtr = (IntPtr)((long)tableRowPtr + Marshal.SizeOf(udpRow));
                 }
             }
-            catch (OutOfMemoryException outOfMemoryException)
-            {
+            //catch (OutOfMemoryException outOfMemoryException)
+            //{
 
-            }
-            catch (Exception exception)
-            {
+            //}
+            //catch (Exception exception)
+            //{
 
-            }
+            //}
             finally
             {
                 Marshal.FreeHGlobal(udpTableRecordPtr);

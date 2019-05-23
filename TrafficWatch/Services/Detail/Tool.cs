@@ -240,13 +240,13 @@ namespace TrafficWatch.Services.Detail
             double value = (double)len * 1000 / timeSpan;
             if (value < 1024 * 1024)
             {
-                return DoubleLengthMax4(value / 1024) + "K/s";
+                return DoubleLengthMax4(value / 1024) + "Kb/s";
             }
             if (value < 1024 * 1024 * 1024)
             {
-                return DoubleLengthMax4(value / 1024 / 1024) + "M/s";
+                return DoubleLengthMax4(value / 1024 / 1024) + "Mb/s";
             }
-            return DoubleLengthMax4(value / 1024 / 1024 / 1024) + "G/s";
+            return DoubleLengthMax4(value / 1024 / 1024 / 1024) + "Gb/s";
         }
         public static string ToString(double len)
         {

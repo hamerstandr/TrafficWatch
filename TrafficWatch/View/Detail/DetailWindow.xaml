@@ -48,11 +48,19 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <TextBlock FontFamily="Wingdings 2"
-                                       FontSize="16"
-                                       FontWeight="Bold"
-                                       Foreground="White"
-                                       Text="P" Margin="1,1,0,1"/>
+                                <Path Stretch="Uniform" Fill="#FFFFFFFF" Width="12" Height="12" Margin="0" RenderTransformOrigin="0.5,0.5">
+                                    <Path.Data>
+                                        <PathGeometry FillRule="Nonzero" Figures="M68.625,7.45333099365234L70.03125,9.89083099365234 63.2900352478027,15.0646600723267 56.8007774353027,20.883020401001 50.5634727478027,27.345911026001 44.578125,34.4533309936523 39.1259765625,41.8449325561523 34.48828125,49.1603622436523 30.6650390625,56.3996200561523 27.65625,63.5627059936523 25.59375,64.9220809936523 21,68.3908309936523 20.37890625,66.1877059936523 19.171875,62.9533309936523 18.09375,60.2814559936523 16.40478515625,56.2721786499023 14.8535146713257,52.9162216186523 13.4399404525757,50.2135848999023 12.1640625,48.1642684936523 10.93212890625,46.6393661499023 9.650390625,45.5099716186523 8.31884765625,44.7760848999023 6.9375,44.4377059936523 8.7744140625,42.9201278686523 10.48828125,41.8361434936523 12.0791015625,41.1857528686523 13.546875,40.9689559936523 15.5390625,41.6222763061523 17.625,43.5822372436523 19.8046875,46.8488388061523 22.078125,51.4220809936523 23.765625,55.1720809936523 28.12939453125,47.8888778686523 32.923828125,40.8986434936523 38.14892578125,34.2013778686523 43.8046875,27.7970809936523 49.7592735290527,21.832239151001 55.8808555603027,16.453332901001 62.1694297790527,11.6603631973267 68.625,7.45333099365234z" />
+                                    </Path.Data>
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <TransformGroup.Children>
+                                                <RotateTransform Angle="0" />
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </TransformGroup.Children>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -66,9 +74,19 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <TextBlock FontSize="16"
-                                       Foreground="White"
-                                       Text="X" Margin="0,-1,1,1" />
+                                <Path Stretch="Uniform" Fill="#FFFFFFFF" Width="12" Height="12" Margin="3" RenderTransformOrigin="0.5,0.5">
+                                    <Path.Data>
+                                        <PathGeometry FillRule="Nonzero" Figures="M19.125,22.3127059936523L20.49609375,27.073450088501 22.453125,31.6994285583496 24.99609375,36.1906394958496 28.125,40.5470809936523 29.15625,41.8595809936523 31.125,39.4689559936523 35.70703125,34.2394676208496 39.796875,30.5041160583496 43.39453125,28.262903213501 46.5,27.5158309936523 49.0664024353027,28.2072410583496 51.140625,30.2814559936523 52.078125,31.5939559936523 48.3369140625,33.6535263061523 44.37890625,36.5509872436523 40.2041015625,40.2863388061523 35.8125,44.8595809936523 33.890625,47.0158309936523 35.296875,48.5627059936523 39.48046875,52.6642684936523 43.5,55.5939559936523 47.35546875,57.3517684936523 51.046875,57.9377059936523 54.984375,57.4689559936523 53.8608360290527,59.6955184936523 52.8339805603027,61.5002059936523 51.9038047790527,62.8830184936523 51.0703125,63.8439559936523 49.2128868103027,64.9689559936523 46.78125,65.3439559936523 43.60546875,64.6964950561523 39.984375,62.7541122436523 35.91796875,59.5168075561523 31.40625,54.9845809936523 29.203125,52.5939559936523 28.03125,54.0939559936523 23.8916015625,59.1183700561523 20.23828125,62.7072372436523 17.0712890625,64.8605575561523 14.390625,65.5783309936523 12.5537109375,65.2033309936523 10.69921875,64.0783309936523 8.8271484375,62.2033309936523 6.9375,59.5783309936523 8.953125,59.8595809936523 12.12890625,59.2296981811523 15.515625,57.3400497436523 19.11328125,54.1906356811523 22.921875,49.7814559936523 24.75,47.4845809936523 23.4375,45.8908309936523 19.294921875,40.7931747436523 16.3359375,36.5158309936523 14.560546875,33.0587997436523 13.96875,30.4220809936523 14.2910146713257,28.719934463501 15.2578115463257,26.8009910583496 16.869140625,24.665246963501 19.125,22.3127059936523z" />
+                                    </Path.Data>
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <TransformGroup.Children>
+                                                <RotateTransform Angle="0" />
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </TransformGroup.Children>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -243,7 +261,11 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="55"/>
         </Grid.ColumnDefinitions>
-        <ToggleButton  x:Name="PinWindows" ToolTip="Pin" HorizontalAlignment="Right" Margin="0,2,5,0" VerticalAlignment="Top"  Click="PinWindows_Click" Style="{StaticResource SwitchTypeToggleButton}" />
+        <ToggleButton  x:Name="PinWindows" ToolTip="Pin" HorizontalAlignment="Left" Margin="10,5,5,0" VerticalAlignment="Top"  Click="PinWindows_Click" Style="{StaticResource SwitchTypeToggleButton}" >
+            <ToggleButton.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="8"/>
+            </ToggleButton.Effect>
+        </ToggleButton>
         <Button Grid.Row="0" Grid.Column="1" x:Name="ButtonClose" ToolTip="Close"   Background="#02000000" Foreground="White" FontSize="18" Click="ButtonClose_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonCloseTemplate}">
             <Viewbox >
                 <Grid Width="48" Height="48" Visibility="Visible">

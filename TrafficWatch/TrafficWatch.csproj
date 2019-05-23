@@ -38,6 +38,12 @@
     <ApplicationIcon>Tray.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="PacketDotNet, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PacketDotNet.0.16.0\lib\PacketDotNet.dll</HintPath>
     </Reference>
@@ -67,11 +73,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BlurWindowExtensions.cs" />
+    <Compile Include="Control\DataChart.cs" />
+    <Compile Include="Control\ChartTraffic.xaml.cs">
+      <DependentUpon>ChartTraffic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ItemMaxDownload.cs" />
     <Compile Include="Control\RelayCommand.cs" />
     <Compile Include="Control\TrayIcon.cs" />
+    <Compile Include="Control\Zooming.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
-    <Compile Include="Model\EmployeeListViewModel.cs" />
-    <Compile Include="Model\EmployeeViewModel.cs" />
     <Compile Include="Services\Detail\CaptureManager.cs" />
     <Compile Include="Services\Detail\DelayRunManager.cs" />
     <Compile Include="Services\Detail\NetworkStructure.cs" />
@@ -104,12 +114,19 @@
     <Compile Include="Services\ThemeService.cs" />
     <Compile Include="Services\UserPreferencesService.cs" />
     <Compile Include="Services\UserSystemPreferencesService.cs" />
+    <Compile Include="View\Toster.xaml.cs">
+      <DependentUpon>Toster.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\WindowSetting.xaml.cs">
       <DependentUpon>WindowSetting.xaml</DependentUpon>
     </Compile>
+    <Page Include="Control\ChartTraffic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\MenuThame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Toster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\WelcomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -188,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Tray.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

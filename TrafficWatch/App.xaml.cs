@@ -21,14 +21,14 @@ namespace TrafficWatch
     public partial class App : Application
     {
         private Mutex _mMutex;
-        private PortProcessMap portProcessMap = PortProcessMap.GetInstance();
+        private readonly PortProcessMap portProcessMap = PortProcessMap.GetInstance();
         public bool screenLengthMaxOne = false;
         //public System.Windows.Forms.MenuItem menuExit, menuEdgeHide, menuShowTrayIcon, menuStartOnBoot, menuTransparency, menuAutoUpdate, menuCheckUpdate, menuAbout, History;
         private CaptureManager captureManager;
-        private UDMap udMap = new UDMap();
+        private readonly UDMap udMap = new UDMap();
         int index = 0;
         public static History _History = new History();
-        private System.Timers.Timer timer = new System.Timers.Timer
+        private readonly System.Timers.Timer timer = new System.Timers.Timer
         {
             Interval = 1000,
             AutoReset = true
@@ -55,38 +55,33 @@ namespace TrafficWatch
         void Init()
         {
             // There is no instance until now.
-            if (true)
+            captureManager = new CaptureManager(udMap);
+            welcomeWindow = new View.WelcomeWindow();
+            welcomeWindow.Show();
+            Thread t = new Thread(new ThreadStart(() =>
             {
-                captureManager = new CaptureManager(udMap);
-                welcomeWindow = new View.WelcomeWindow();
-                welcomeWindow.Show();
-                Thread t = new Thread(new ThreadStart(() =>
-                {
                     //如果用户按的足够快，先按了exit，那么会先执行Exit，后执行captureManager.InitAndStart() !!! This is a bug, but it will not trigger unless user is really really fast !!!.
                     if (!captureManager.InitAndStart())
+                {
+                    Dispatcher.InvokeAsync(new Action(() =>
                     {
-                        Dispatcher.InvokeAsync(new Action(() =>
-                        {
-                            MessageBox.Show("WinPcap is one dependency of NetSpeedMonitor.\nYou can visit https://www.winpcap.org/ to install this software.\nAnd make sure WinPcap is properly installed on the local machine. \n\n[NetSpeedMonitor]");
-                            Process.Start("https://www.winpcap.org/");
-                            Shutdown();
-                        }));
-                    }
-                    else
+                        MessageBox.Show("WinPcap is one dependency of NetSpeedMonitor.\nYou can visit https://www.winpcap.org/ to install this software.\nAnd make sure WinPcap is properly installed on the local machine. \n\n[NetSpeedMonitor]");
+                        Process.Start("https://www.winpcap.org/");
+                        Shutdown();
+                    }));
+                }
+                else
+                {
+                    Dispatcher.InvokeAsync(new Action(() =>
                     {
-                        Dispatcher.InvokeAsync(new Action(() =>
-                        {
-                            InitViewAndNeedClosedResourcees();
-                            welcomeWindow.ReduceAndClose(new Point(mainWindow.Left + mainWindow.Width / 2, mainWindow.Top + mainWindow.Height / 2));
-                        }));
-                    }
-                }));
-                t.Start();
-            }
-            else
-            {
-                Shutdown();
-            }
+                        InitViewAndNeedClosedResourcees();
+                        welcomeWindow.ReduceAndClose(new Point(mainWindow.Left + mainWindow.Width / 2, mainWindow.Top + mainWindow.Height / 2));
+                    }));
+                }
+            }));
+            t.Start();
+
+
         }
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
@@ -104,7 +99,6 @@ namespace TrafficWatch
                 index++;
             }));
         }
-        UDStatistic Temp = new UDStatistic();
         public static bool IsWindows8orhigher()
         {
             Version win8version = new Version(6, 2, 9200, 0);

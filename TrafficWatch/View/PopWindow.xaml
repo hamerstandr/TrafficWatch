@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrafficWatch"
+        xmlns:Controls="clr-namespace:TrafficWatch.Control"
         mc:Ignorable="d"
         Title="TrafficWatch" Height="333.425" Width="199.823" Topmost="True"
         ShowInTaskbar="False"
@@ -351,16 +352,16 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label  Content="▲" Grid.Column="0" Foreground="#FFFB0303" Margin="5,0,0,0" />
-                    <Label x:Name="MiniLabelU" Content="0" Margin="-5,0,0,0" Grid.Column="0" Foreground="White" />
+                    <Label  Content="{Binding Content, ElementName=lblUpload}" Margin="-5,0,0,0" Grid.Column="0" Foreground="White" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Column="1" >
                     <Label  Content="▼"  Background="{x:Null}" Foreground="#FF3AFF00" />
-                    <Label x:Name="MiniLabelD" Content="0" Margin="-5,0,0,0" HorizontalAlignment="Left"  Background="{x:Null}" Foreground="White" />
+                    <Label  Content="{Binding Content, ElementName=lblDownload}" Margin="-5,0,0,0" HorizontalAlignment="Left"  Background="{x:Null}" Foreground="White" />
                 </StackPanel>
                 <Button Grid.Column="2"  HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Top" Width="32" Height="32" Background="#02000000" BorderBrush="{x:Null}" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
             </Grid>
             <Grid x:Name="M3" Grid.Row="0">
-                <!--<Controls:ChartTraffic x:Name="Chart1" Height="100"/>-->
+                <Controls:ChartTraffic x:Name="Chart1" Height="100" Margin="10,0,5,0"/>
             </Grid>
             <Button Grid.Row="1" Click="Exclod_Click" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Top" Width="32" Height="32" Background="#08000000" BorderBrush="{x:Null}" Foreground="{DynamicResource WindowForeground}" RenderTransformOrigin="0.5,0.5">
                 <Viewbox >

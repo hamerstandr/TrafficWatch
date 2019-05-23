@@ -19,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using TrafficWatch.Control;
 using TrafficWatch.Extensions;
 using TrafficWatch.Properties;
 using TrafficWatch.Services.Detail;
@@ -31,9 +32,9 @@ namespace TrafficWatch
     /// </summary>
     public partial class PopWindow : Window, ICanMoveDetailWindowToRightPlace
     {
-        
+
         #region Network
-        List<NetworkInterface> goodAdapters = new List<NetworkInterface>();
+        readonly List<NetworkInterface> goodAdapters = new List<NetworkInterface>();
         /// <summary>
         /// Initialize all network interfaces on this computer
         /// </summary>
@@ -62,169 +63,12 @@ namespace TrafficWatch
             }
             if (goodAdapters.Count == 0) cmbInterface.Items.Clear();
         }
-        System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
 
-        internal void TopWindows()
-        {
-            if (!this.Topmost)
-            { Program.WriteSetting("TopWindows", "1"); this.Topmost = true; }
-            else { Program.WriteSetting("TopWindows", "0"); this.Topmost = false; }
-        }
+        
+        
 
-        /// <summary>
-        /// Initialize the Timer
-        /// </summary>
-        private void InitializeTimer()
-        {
-            timer.Interval = new TimeSpan(0, 0, 1);
-            timer.Tick += new EventHandler(Timer_Tick);
-            timer.Start();
-
-        }
-        double Send = 0;
-        double Received = 0;
-        /// <summary>
-        /// Update GUI components for the network interfaces
-        /// </summary>
-        private void UpdateNetworkInterface()
-        {
-            //MessageBox.Show(cmbInterface.Items.Count.ToString());
-            if (cmbInterface.Items.Count >= 1)
-            {
-                if(!Dis)
-                    Dis = true;
-                // Grab NetworkInterface object that describes the current interface
-                NetworkInterface nic = goodAdapters[cmbInterface.SelectedIndex];
-
-                // Grab the stats for that interface
-                IPv4InterfaceStatistics interfaceStats = nic.GetIPv4Statistics();
-
-
-                Double bytesSentSpeed = (Double)(interfaceStats.BytesSent - Send) / 1024;
-                Double bytesReceivedSpeed = (Double)(interfaceStats.BytesReceived - Received) / 1024;
-
-                // Update the labels
-                //lblSpeed.Text = nic.Speed.ToString();
-                lblInterfaceType.Content = nic.NetworkInterfaceType.ToString();
-                //lblSpeed.Text = (nic.Speed).ToString("N0");
-                Send = interfaceStats.BytesSent;
-                Received = interfaceStats.BytesReceived;
-                lblBytesSent.Content = Conv(Send).ToString();
-
-                lblBytesReceived.Content = Conv(Received) ;
-
-
-                if (bytesSentSpeed < 1024)
-                    lblUpload.Content =  bytesSentSpeed.ToString("f2")+ " KB/s" ;
-                else
-                    lblUpload.Content = (bytesSentSpeed / 1024).ToString("f2") + " MB/s";
-                if (bytesReceivedSpeed < 1024)
-                    lblDownload.Content =  bytesReceivedSpeed.ToString("f2") + " KB/s";
-                else
-                    lblDownload.Content = (bytesReceivedSpeed / 1024).ToString("f2") + " MB/s";
-
-                _trayIcon.BalloonTipText("▲ " + lblUpload.Content + "▼ " + lblDownload.Content);
-                MiniLabelD.Content =  lblDownload.Content;
-                MiniLabelU.Content =  lblUpload.Content;
-                //Chart1.Downloaded = bytesReceivedSpeed;
-                //Chart1.Uploaded = bytesSentSpeed;
-                UnicastIPAddressInformationCollection ipInfo = nic.GetIPProperties().UnicastAddresses;
-
-                foreach (UnicastIPAddressInformation item in ipInfo)
-                {
-                    if (item.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                    {
-                        labelIPAddress.Content = item.Address.ToString();
-                        //uniCastIPInfo = item;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                if(Dis)
-                {
-                    Dis = false;
-                    lblInterfaceType.Content = "-";
-                    lblDownload.Content = 0;
-                    lblUpload.Content = 0;
-                    MiniLabelD.Content = 0;
-                    MiniLabelU.Content = 0;
-                    lblBytesReceived.Content = 0;
-                    lblBytesSent.Content = 0;
-                    labelIPAddress.Content = "0.0.0.0";
-                }
-                
-            }
-        }
-        bool Dis = true;
-        static readonly string[] SizeSuffixes =
-                   { "bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
-        static string SizeSuffix(Int64 value, int decimalPlaces = 1)
-        {
-            if (value < 0) { return "-" + SizeSuffix(-value); }
-            if (value == 0) { return "0.0 bytes"; }
-
-            // mag is 0 for bytes, 1 for KB, 2, for MB, etc.
-            int mag = (int)Math.Log(value, 1024);
-
-            // 1L << (mag * 10) == 2 ^ (10 * mag) 
-            // [i.e. the number of bytes in the unit corresponding to mag]
-            decimal adjustedSize = (decimal)value / (1L << (mag * 10));
-
-            // make adjustment when the value is large enough that
-            // it would round up to 1000 or more
-            if (Math.Round(adjustedSize, decimalPlaces) >= 1000)
-            {
-                mag += 1;
-                adjustedSize /= 1024;
-            }
-
-            return string.Format("{0:n" + decimalPlaces + "} {1}",
-                adjustedSize,
-                SizeSuffixes[mag]);
-        }
-        static string SizeSuffix(Double value, int decimalPlaces = 1)
-        {
-            if (value < 0) { return "-" + SizeSuffix(-value); }
-            if (value == 0) { return "0.0 bytes"; }
-
-            // mag is 0 for bytes, 1 for KB, 2, for MB, etc.
-            int mag = (int)Math.Log(value, 1024);
-
-            // 1L << (mag * 10) == 2 ^ (10 * mag) 
-            // [i.e. the number of bytes in the unit corresponding to mag]
-            decimal adjustedSize = (decimal)value / (1L << (mag * 10));
-
-            // make adjustment when the value is large enough that
-            // it would round up to 1000 or more
-            if (Math.Round(adjustedSize, decimalPlaces) >= 1000)
-            {
-                mag += 1;
-                adjustedSize /= 1024;
-            }
-
-            return string.Format("{0:n" + decimalPlaces + "} {1}",
-                adjustedSize,
-                SizeSuffixes[mag]);
-        }
-        private string Conv(double n)
-        {
-
-            return SizeSuffix(n).ToString();
-        }
         int refresh = 11;
-        void Timer_Tick(object sender, EventArgs e)
-        {
-            if (!isEdgeHide && refresh>10)
-            {
-                InitializeNetworkInterface();
-                refresh = -1;
-            }
-            refresh++;
-            UpdateNetworkInterface();
 
-        }
         #endregion
         private readonly Control.TrayIcon _trayIcon;
         public static PopWindow Me;
@@ -260,33 +104,62 @@ namespace TrafficWatch
             if (m == "1") Max(true); else Max(false);
             var h = Program.ReadSetting("Hiden", "0");
             if (h == "1") CreateAndHideWindow(); else CreateAndShowWindow();
+            double.TryParse(Program.ReadSetting("MaxDownload", "0"), out MaxDownload);
+            SetMaxDownload(MaxDownload);
             //
             detailWindow = new DetailWindow(this);
             detailWindow.IsVisibleChanged += DetailWindow_IsVisibleChanged;
-            //dispatcherTimer = new DispatcherTimer();
-            //dispatcherTimer.Tick += DispatcherTimer_Tick;
-            var menu = new System.Windows.Controls.ContextMenu();
-            menu.ItemsSource = _trayIcon.BuildContextMenu(false).Items;
-            this.ContextMenu = menu;
-            //dispatcherTimer.IsEnabled = true;
+            var menu = new System.Windows.Controls.ContextMenu
+            {
+                ItemsSource = _trayIcon.BuildContextMenu(false).Items
+            };
+            //this.ContextMenu = menu;
+            
+        }
+        internal void TopWindows()
+        {
+            if (!this.Topmost)
+            { Program.WriteSetting("TopWindows", "1"); this.Topmost = true; }
+            else { Program.WriteSetting("TopWindows", "0"); this.Topmost = false; }
         }
         #region Detail + Edge
-        //private void DispatcherTimer_Tick(object sender, EventArgs e)
-        //{
-        //    //Console.WriteLine("DispatcherTimer_Tick: " + DateTime.Now);
-        //    if (CheckHasFullScreenApp(out bool notSure))
-        //    {
-        //        dispatcherTimer.IsEnabled = false;
-        //        HideAllView(true);
-        //    }
-        //    else
-        //    {
-        //        if (dispatcherTimer.Interval < maxSpan)
-        //        {
-        //            dispatcherTimer.Interval += spaceTimeSpan;
-        //        }
-        //    }
-        //}
+        readonly System.Windows.Threading.DispatcherTimer TimerHiddenEdge = new System.Windows.Threading.DispatcherTimer();
+        
+        
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            IntPtr handle = (new WindowInteropHelper(this)).Handle;
+            HwndSource.FromHwnd(handle).AddHook(new HwndSourceHook(WindowProc));
+
+            taskBarCreatedMsg = WinAPIWrapper.RegisterWindowMessage("TaskbarCreated");
+            uCallBackMsg = WinAPIWrapper.RegisterWindowMessage("APPBARMSG_CSDN_HELPER_USTC.Software.hanyizhao.NetSpeedMonitor");
+            RegisterAppBar(true);
+        }
+        /// <summary>
+        /// Initialize the Timer
+        /// </summary>
+        private void InitializeTimer()
+        {
+            TimerHiddenEdge.Interval = new TimeSpan(0, 0, 1);
+            TimerHiddenEdge.Tick += new EventHandler(Timer_Tick);
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            //Console.WriteLine("DispatcherTimer_Tick: " + DateTime.Now);
+            if (CheckHasFullScreenApp(out bool notSure))
+            {
+                //TimerHiddenEdge.IsEnabled = false;
+                HideAllView(true);
+            }
+            //else
+            //{
+            //    if (TimerHiddenEdge.Interval < maxSpan)
+            //    {
+            //        TimerHiddenEdge.Interval += spaceTimeSpan;
+            //    }
+            //}
+        }
         private void DetailWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (detailWindow.Visibility == Visibility.Hidden)
@@ -296,26 +169,144 @@ namespace TrafficWatch
         }
         public void NewData(UDStatistic statistics)
         {
+            //Detaile windows
             if (detailWindow?.Visibility == Visibility.Visible)
             {
                 detailWindow.NewData(statistics.items, statistics.timeSpan);
             }
+            //MonitorProcess
             View.Monitor.MonitorProcess.Me?.NewData(statistics.items, statistics.timeSpan);
+            if (!isEdgeHide && refresh > 10)
+            {
+                InitializeNetworkInterface();
+                refresh = -1;
+            }
+            refresh++;
+            //update Ui
+            UpdateUi(statistics, statistics.timeSpan);
+            //set max download
+            if (statistics.download > MaxDownload)
+            {
+                SetMaxDownload(statistics.download);
+                TrayIcon.ShowNotification("Traffic Watch", $"Max Download : {Tool.GetNetSpeedString(statistics.download, statistics.timeSpan) }");
+            }
+            //Mid = (MaxDownload / 8) * limited;
+            if (statistics.download >= Mid)
+            {
+                ListMaxDownload.Add(new ItemMaxDownload(statistics.download,DateTime.Now));
+                ShowToster( $"Download : {Tool.GetNetSpeedString(statistics.download, statistics.timeSpan) }");
+                //index += 1;
+            }
+            //else
+            //{
+
+            //}
+            
         }
-        //
-        private int uCallBackMsg, taskBarCreatedMsg;
+        /// <summary>
+        /// Update GUI components for the network interfaces
+        /// </summary>
+        private void UpdateUi(UDStatistic item, double timeSpan)
+        {
+            //MessageBox.Show(cmbInterface.Items.Count.ToString());
+            if (cmbInterface.Items.Count >= 1)
+            {
+                // Grab NetworkInterface object that describes the current interface
+                NetworkInterface nic = goodAdapters[cmbInterface.SelectedIndex];
+                // Grab the stats for that interface
+                IPv4InterfaceStatistics interfaceStats = nic.GetIPv4Statistics();
+                // Update the labels
+                lblInterfaceType.Content = nic.NetworkInterfaceType.ToString();
 
-        private DetailWindow detailWindow;
 
-        public bool isEdgeHide = false;
-        private double edgeHideSpace = 4;
+                //All Trafic
+                lblBytesSent.Content = Tool.ToString(App._History.Data.Total.Upload);
 
-        private double oldLeft, oldTop;
-        private DateTime leftPressTime = DateTime.Now;
-        private DispatcherTimer dispatcherTimer;
+                lblBytesReceived.Content = Tool.ToString(App._History.Data.Total.Download);
+
+                //Now Trafic
+                lblUpload.Content = Tool.GetNetSpeedString(item.upload, timeSpan);
+                lblDownload.Content = Tool.GetNetSpeedString(item.download, timeSpan);
+                //update try Balloon
+                _trayIcon.BalloonTipText("▲ " + lblUpload.Content + "▼ " + lblDownload.Content);
+
+                
+                if (!isEdgeHide)
+                {//Byte to kB/s
+                    Chart1.Downloaded(item.upload / 1024);
+                    Chart1.Uploaded(item.download / 1024);
+                }
+
+                UnicastIPAddressInformationCollection ipInfo = nic.GetIPProperties().UnicastAddresses;
+
+                foreach (UnicastIPAddressInformation Info in ipInfo)
+                {
+                    if (Info.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                    {
+                        labelIPAddress.Content = Info.Address.ToString();
+                        //uniCastIPInfo = item;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                lblInterfaceType.Content = "-";
+                lblDownload.Content = 0;
+                lblUpload.Content = 0;
+                lblBytesReceived.Content = 0;
+                lblBytesSent.Content = 0;
+                labelIPAddress.Content = "0.0.0.0";
+            }
+        }
+        //int index = 0;
+        /// <summary>
+        /// set MaxDownload and mathd Mid
+        /// </summary>
+        /// <param name="SpeedDownload">Download</param>
+        private void SetMaxDownload(double SpeedDownload)
+        {
+            if (MaxDownload != SpeedDownload) Program.WriteSetting("MaxDownload", SpeedDownload.ToString());
+            MaxDownload = SpeedDownload;
+            Mid = (MaxDownload / 8) * limited;
+            
+        }
+
+        private readonly int limited = 1;
+        void ShowToster(string Message)
+        {
+            if (toster == null)
+            {
+                toster = new Toster(Message);
+                toster.Closed += Toster_Closed;
+                toster.Show();
+            }
+            else
+                toster.Text.Text = Message;
+        }
+
+        private void Toster_Closed(object sender, EventArgs e)
+        {
+            toster.Closed -= Toster_Closed;
+            toster = null;
+        }
+
+        Toster toster;
+        double Mid = 0;
+        readonly List<ItemMaxDownload> ListMaxDownload = new List<ItemMaxDownload>();
+        
+        double MaxDownload = 0;
+        private int uCallBackMsg, taskBarCreatedMsg=0;
         private TimeSpan minSpan = new TimeSpan(2500000);// 0.2s
         private TimeSpan maxSpan = new TimeSpan(0, 0, 7);
         private TimeSpan spaceTimeSpan = new TimeSpan(7500000);
+        private readonly DetailWindow detailWindow;
+
+        public bool isEdgeHide = false;
+        private readonly double edgeHideSpace = 4;
+
+        private double oldLeft, oldTop;
+        private DateTime leftPressTime = DateTime.Now;
 
         public readonly Thickness windowPadding = new Thickness(-3, 0, -3, -3);
         private void HideAllView(bool hide)
@@ -400,6 +391,7 @@ namespace TrafficWatch
         }
         public void TryToSetEdgeHide(bool edgeHide)
         {
+            TimerHiddenEdge.IsEnabled = true;
             Settings.Default.edgeHide = edgeHide;
             Settings.Default.Save();
             if (edgeHide)
@@ -461,9 +453,9 @@ namespace TrafficWatch
             {
                 //register
                 abd.uCallbackMessage = uCallBackMsg;
-                uint ret = WinAPIWrapper.SHAppBarMessage((int)Services.Detail.ABMsg.ABM_NEW, ref abd);
+                _ = WinAPIWrapper.SHAppBarMessage((int)Services.Detail.ABMsg.ABM_NEW, ref abd);
                 // Check whether there is a full screen app now.
-                HideAllView(CheckHasFullScreenApp(out bool a));
+                HideAllView(CheckHasFullScreenApp(out _));
             }
             else
             {
@@ -520,7 +512,46 @@ namespace TrafficWatch
             }
             return result;
         }
-
+        private IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == taskBarCreatedMsg)
+            {
+                Console.WriteLine("Receive Message: TaskbarCreated");
+                TimerHiddenEdge.IsEnabled = false;
+                RegisterAppBar(false);
+                RegisterAppBar(true);
+            }
+            if (msg == uCallBackMsg)
+            {
+                if (wParam.ToInt32() == (int)ABNotify.ABN_FULLSCREENAPP)
+                {
+                    bool hasFull = false;
+                    if (lParam.ToInt32() == 1)
+                    {
+                        hasFull = CheckHasFullScreenApp(out bool notSure);
+                        if (!hasFull && notSure)
+                        {
+                            // Now taskbar tells us where is a full screen app. But it doesn't not fill screen now. Maybe it will fill screen later.
+                            if (!TimerHiddenEdge.IsEnabled)
+                            {
+                                TimerHiddenEdge.Interval = minSpan;
+                                TimerHiddenEdge.IsEnabled = true;
+                            }
+                        }
+                        else
+                        {
+                            TimerHiddenEdge.IsEnabled = false;
+                        }
+                    }
+                    else
+                    {
+                        TimerHiddenEdge.IsEnabled = false;
+                    }
+                    HideAllView(hasFull);
+                }
+            }
+            return IntPtr.Zero;
+        }
 
         public readonly Thickness windowMargin = new Thickness(-3, 3, -3, 0);
         void ICanMoveDetailWindowToRightPlace.MoveDetailWindowToRightPlace(DetailWindow dw)
@@ -722,7 +753,7 @@ namespace TrafficWatch
 
         private void Exclod_Click(object sender, RoutedEventArgs e)
         {
-            int Chart = 0;
+            int Chart;
             if (M3.Visibility == Visibility.Visible)
             {
                 Chart = 100;
@@ -756,12 +787,7 @@ namespace TrafficWatch
 
         private void Max(bool Steit)
         {
-            int Chart = 0;
-            if (Program.ReadSetting("Chart", "0")=="1")
-            {
-                Chart = 100;
-            }
-            else { Chart = 0; }
+            int Chart = Program.ReadSetting("Chart", "0")=="1" ? 100 : 0;//224
             if (Steit)
             {
                 M1.Visibility = Visibility.Hidden;

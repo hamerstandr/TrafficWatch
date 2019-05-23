@@ -21,15 +21,15 @@ namespace TrafficWatch.View.Monitor
     /// </summary>
     public partial class MonitorProcess : Window
     {
-        int IDProcess;
+        readonly int IDProcess;
         public MonitorProcess(int IDProcess)
         {
             InitializeComponent();
             this.IDProcess = IDProcess;
             this.Closing += MonytorProcess_Closing;
-            init();
+            Init();
         }
-        private Dictionary<int, ProcessView> idMap = new Dictionary<int, ProcessView>();
+        private readonly Dictionary<int, ProcessView> idMap = new Dictionary<int, ProcessView>();
         private void MonytorProcess_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             idMap.Clear();
@@ -40,15 +40,19 @@ namespace TrafficWatch.View.Monitor
             Me = null;
         }
 
-        void init()
+        private void Init()
         {
             Me = this;
             if (Application.Current is App app)
             {
                 app.NeedPortProcessMap(this, true);
             }
+            Chart1.Zoom = Control.Zooming.X;
+            Chart1.Hoverable = true;
         }
         public static MonitorProcess Me;
+        long Upload = 0;
+        long Download = 0;
         public void NewData(List<UDOneItem> items, double timeSpan)
         {
             UDOneItem item = items.Where(x => x.ProcessID == IDProcess).FirstOrDefault();
@@ -56,6 +60,12 @@ namespace TrafficWatch.View.Monitor
             {
                 down.Text = Tool.GetNetSpeedString(item.Download, timeSpan);
                 up.Text = Tool.GetNetSpeedString(item.Upload, timeSpan);
+                Upload += item.Upload;
+                Download += item.Download;
+                up.Text = Tool.ToString(Upload);
+                down.Text = Tool.ToString(Download);
+                Chart1.Uploaded(item.Upload);
+                Chart1.Downloaded(item.Download);
                 if (item.ProcessID == -1)
                 {
                     Names.Text = "bridge";
@@ -70,7 +80,7 @@ namespace TrafficWatch.View.Monitor
                     Names.Text = view.Name ?? "Process ID: " + view.ID;
                     if (view.Image != null)
                     {
-                        Icon.Source = view.Image;
+                        Icons.Source = view.Image;
                     }
                 }
 
@@ -80,7 +90,22 @@ namespace TrafficWatch.View.Monitor
             {
                 up.Text = "0K/s";
                 down.Text = "0K/s";
+                Chart1.Uploaded( 0);
+                Chart1.Downloaded( 0);
             }
+        }
+
+        private void Chart1_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Chart1.ResetrtZoom();
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+            int.TryParse(((TextBox)sender).Text, out int input);
+            if (input > 0) Chart1.HistoryLenth = input;
         }
     }
 }

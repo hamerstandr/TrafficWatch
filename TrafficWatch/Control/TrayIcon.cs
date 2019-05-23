@@ -27,7 +27,7 @@ namespace TrafficWatch.Control
                 SetResources();
             _trayIcon = new System.Windows.Forms.NotifyIcon();
             _trayIcon.MouseClick += TrayIcon_MouseClick;
-            _trayIcon.DoubleClick += _trayIcon_DoubleClick;
+            _trayIcon.DoubleClick += TrayIcon_DoubleClick;
             _trayIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri("pack://application:,,,/TrafficWatch;component/Tray.ico")).Stream); //GetTrayIconByDPI();
             _trayIcon.Text = string.Concat(Name);
             _trayIcon.Visible = true;
@@ -35,7 +35,7 @@ namespace TrafficWatch.Control
             Application.Current.Exit += App_Exit;
         }
 
-        private void _trayIcon_DoubleClick(object sender, EventArgs e)
+        private void TrayIcon_DoubleClick(object sender, EventArgs e)
         {
             if (_trayIcon.BalloonTipText != string.Empty)
                 _trayIcon.ShowBalloonTip(10);
@@ -57,11 +57,13 @@ namespace TrafficWatch.Control
         ResourceDictionary myResourceDictionary;
         void SetResources()
         {
-            myResourceDictionary = new ResourceDictionary();
-            myResourceDictionary.Source =
+            myResourceDictionary = new ResourceDictionary
+            {
+                Source =
         new Uri("Control/MenuThame.xaml",
-                UriKind.RelativeOrAbsolute);
-            
+                UriKind.RelativeOrAbsolute)
+            };
+
             App.Current.Resources.MergedDictionaries.Add(myResourceDictionary);
         }
         public ContextMenu BuildContextMenu(bool _Style)
@@ -109,7 +111,7 @@ namespace TrafficWatch.Control
             AddItem("Top Windows", TopWindowsCommand, (Program.ReadSetting("TopWindows", "0") == "0" ? false : true), null);
             var x = AddItem("Hide when close to edge", EdgeHideWindowCommand, Settings.Default.edgeHide, null);
             x.IsEnabled = WindowMenuEdgeHideEnabled;
-            //AddItem("Chart", ChartCommand, (Program.ReadSetting("Chart", "0") == "0" ? false : true), null);
+            AddItem("Chart", ChartCommand, (Program.ReadSetting("Chart", "0") == "0" ? false : true), null);
             cm.Items.Add(new Separator { Style = separatorStyle });
             AddItem("Info Interface", InfoInterfaceCommand, false, null);
             AddItem("History", HistoryCommand, false, null);
@@ -130,7 +132,7 @@ namespace TrafficWatch.Control
         }
         public void BalloonTipText(string Text)
         {
-            _trayIcon.BalloonTipText = (Text);
+            _trayIcon.BalloonTipText = Text;
         }
         public void BalloonTipTitle(string Title)
         {

@@ -8,7 +8,7 @@ namespace TrafficWatch
 {
     public class History
     {
-        public Data Data1 = new Data();
+        public Data Data = new Data();
         string PathFileData;
         DataHistory Now;
         public History()
@@ -17,13 +17,13 @@ namespace TrafficWatch
     Environment.SpecialFolder.ApplicationData), typeof(App).Assembly.ManifestModule.Name.Replace(".exe", ""));
             Directory.CreateDirectory(PathFileData);
             PathFileData = Path.Combine(PathFileData, "Data.xml");
-            Data1 = Data.Load(PathFileData);
+            Data = Data.Load(PathFileData);
         }
         public EventHandler<string> ChengEvent;
         public void Add(UDStatistic statistics, DateTime date)
         {
-            Data1.Total.Download += statistics.download;
-            Data1.Total.Upload += statistics.upload;
+            Data.Total.Download += statistics.download;
+            Data.Total.Upload += statistics.upload;
             HowGetNew(date);
             Now.Download += statistics.download;
             Now.Upload += statistics.upload;
@@ -31,16 +31,16 @@ namespace TrafficWatch
         }
         void HowGetNew(DateTime date)
         {
-            Now = Data1.ListHistory.Find(x => x.Date.Month == date.Month && x.Date.Day == date.Day);
+            Now = Data.ListHistory.Find(x => x.Date.Month == date.Month && x.Date.Day == date.Day);
             if (Now == null)
             {
                 Now = new DataHistory() { Date = DateTime.Now };
-                Data1.ListHistory.Add(Now);
+                Data.ListHistory.Add(Now);
             }
         }
         internal void Save()
         {
-            Data.Save(Data1, PathFileData);
+            Data.Save(Data, PathFileData);
         }
     }
     [XmlRoot("Data", Namespace = "hamerstandr",

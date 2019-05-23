@@ -55,8 +55,8 @@ namespace TrafficWatch.View.Detail
         double monthu = 0;
         private void Chenge(object sender, string e)
         {
-            Totaldownload = Tool.ToString(App._History.Data1.Total.Download);
-            Totalupload = Tool.ToString(App._History.Data1.Total.Upload);
+            Totaldownload = Tool.ToString(App._History.Data.Total.Download);
+            Totalupload = Tool.ToString(App._History.Data.Total.Upload);
             if (index == 60)
             {
                 CallDay();
@@ -71,7 +71,7 @@ namespace TrafficWatch.View.Detail
         {
             int day = DateTime.Now.Day;
             dayd = 0; dayu = 0;
-            var d = App._History.Data1.ListHistory.Where(x => x.Date.Day == day).ToList();
+            var d = App._History.Data.ListHistory.Where(x => x.Date.Day == day).ToList();
             WhereDay(d, day);
             
         }
@@ -80,7 +80,7 @@ namespace TrafficWatch.View.Detail
             index = -1;
             int month = DateTime.Now.Month;
             monthd = 0; monthu = 0;
-            var m = App._History.Data1.ListHistory.Where(x => x.Date.Month == month).ToList();
+            var m = App._History.Data.ListHistory.Where(x => x.Date.Month == month).ToList();
             WhereMonth(m, month);
         }
         void WhereDay(List<DataHistory> ListData, int day)

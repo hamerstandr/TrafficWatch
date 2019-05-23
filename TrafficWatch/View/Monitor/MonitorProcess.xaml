@@ -4,19 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrafficWatch.View.Monitor"
+        xmlns:Controls="clr-namespace:TrafficWatch.Control"
         mc:Ignorable="d"
-        Title="MonytorProcess" Height="273.364" Width="507.71">
+        Title="MonytorProcess" Height="300.364" Width="388.71" ResizeMode="NoResize">
     <Grid>
-        <Image x:Name="Icon" HorizontalAlignment="Left" Height="32" Margin="6,10,0,0" VerticalAlignment="Top" Width="32"/>
-        <TextBlock x:Name="Names" HorizontalAlignment="Left" Margin="43,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="Icons" HorizontalAlignment="Left" Height="32" Margin="6,10,0,0" VerticalAlignment="Top" Width="32"/>
+            <TextBlock x:Name="Names" HorizontalAlignment="Left" Margin="43,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
 
-        <TextBlock x:Name="up"  Height="30" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,45,0,0" Width="107"/>
-        <TextBlock x:Name="down"  Height="30" TextWrapping="Wrap" Margin="80,80,0,0" HorizontalAlignment="Left" Width="107" VerticalAlignment="Top"/>
+            <TextBlock x:Name="up"  Height="23" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="94,52,0,0" Width="98" Text="0K/s"/>
+            <TextBlock x:Name="down"  Height="23" TextWrapping="Wrap" Margin="94,87,0,0" HorizontalAlignment="Left" Width="98" VerticalAlignment="Top" Text="0K/s"/>
+            <Label Content="Upload :" Height="30" Margin="14,45,0,0" HorizontalAlignment="Left" Width="73" VerticalAlignment="Top"/>
+            <Label Content="Download :"  Height="30" Margin="14,80,0,0" HorizontalAlignment="Left" Width="73" VerticalAlignment="Top"/>
+            
+            <TextBlock x:Name="up2" Grid.Column="1"  Height="23" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="94,52,0,0" Width="98" Text="0K/s"/>
+            <TextBlock x:Name="down2" Grid.Column="1"  Height="23" TextWrapping="Wrap" Margin="94,87,0,0" HorizontalAlignment="Left" Width="98" VerticalAlignment="Top" Text="0K/s"/>
+            <Label Content="Upload :" Grid.Column="1" Height="30" Margin="14,45,0,0" HorizontalAlignment="Left" Width="73" VerticalAlignment="Top"/>
+            <Label Content="Download :" Grid.Column="1"  Height="30" Margin="14,80,0,0" HorizontalAlignment="Left" Width="73" VerticalAlignment="Top"/>
 
-        <Label Content="Upload" Height="30" Margin="0,45,425,167"/>
-        <Label Content="Download"  Height="30" Margin="0,80,425,132"/>
-
-
-
+        </Grid>
+        <Expander Header="Expander" Height="154" Margin="10,115,10,0" VerticalAlignment="Top" IsExpanded="True">
+            <Grid Background="#FFE5E5E5" Margin="0,0,-2,0">
+                <Label Content="History Lenth :" HorizontalAlignment="Left" Margin="3,7,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="20" Margin="94,10,-51,0" TextWrapping="Wrap" Text="{Binding HistoryLenth, ElementName=Chart1}" VerticalAlignment="Top" Width="87" TextAlignment="Center" TextChanged="TextBox_TextChanged"/>
+                <Controls:ChartTraffic x:Name="Chart1" Height="93" Margin="0,38,0,0" History="True" Zoom="{Binding Zoom.X, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Controls:ChartTraffic}}}" MouseRightButtonDown="Chart1_MouseRightButtonDown" VerticalAlignment="Top"/>
+            </Grid>
+        </Expander>
     </Grid>
 </Window>
