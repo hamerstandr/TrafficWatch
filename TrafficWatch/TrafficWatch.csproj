@@ -214,4 +214,7 @@
     <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>taskkill /f /fi "IMAGENAME eq TrafficWatch.exe"</PreBuildEvent>
+  </PropertyGroup>
 </Project>

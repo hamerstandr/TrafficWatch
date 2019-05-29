@@ -62,8 +62,8 @@ namespace TrafficWatch.View.Monitor
                 up.Text = Tool.GetNetSpeedString(item.Upload, timeSpan);
                 Upload += item.Upload;
                 Download += item.Download;
-                up.Text = Tool.ToString(Upload);
-                down.Text = Tool.ToString(Download);
+                up2.Text = Tool.ToString(Upload);
+                down2.Text = Tool.ToString(Download);
                 Chart1.Uploaded(item.Upload);
                 Chart1.Downloaded(item.Download);
                 if (item.ProcessID == -1)

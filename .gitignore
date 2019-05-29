@@ -1,0 +1,12 @@
+
+*.ide-shm
+TrafficWatch/bin/Debug/*
+TrafficWatch/bin/Debug/TrafficWatch.exe
+TrafficWatch/bin/Debug/TrafficWatch.pdb
+TrafficWatch/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+TrafficWatch/obj/Debug/TrafficWatch.csproj.CoreCompileInputs.cache
+TrafficWatch/obj/Debug/TrafficWatch.csprojAssemblyReference.cache
+TrafficWatch/obj/Debug/TrafficWatch.exe
+TrafficWatch/obj/Debug/TrafficWatch.pdb
+TrafficWatch/obj/Debug/TrafficWatch_MarkupCompile.i.cache
+TrafficWatch/obj/Debug/TrafficWatch_MarkupCompile.i.lref

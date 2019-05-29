@@ -483,7 +483,7 @@ namespace TrafficWatch
             catch (Exception)
             {
             }
-            if (foreGroundWindowName != "explorer" && !foreWindow.Equals(new WindowInteropHelper(this).Handle))
+            if (foreGroundWindowName != "explorer" && !foreWindow.Equals(new WindowInteropHelper(this).Handle))//"SearchUI"
             {
                 IntPtr deskWindow = WinAPIWrapper.GetDesktopWindow();
                 if (!foreWindow.Equals(deskWindow) && !foreWindow.Equals(WinAPIWrapper.GetShellWindow()))
@@ -509,6 +509,10 @@ namespace TrafficWatch
             {
                 // Foreground window is Windows Explorer or MainWindow itself.
                 result = false;
+            }
+            if (result)
+            {
+
             }
             return result;
         }
