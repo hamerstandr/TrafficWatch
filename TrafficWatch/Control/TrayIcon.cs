@@ -116,7 +116,11 @@ namespace TrafficWatch.Control
             AddItem("Info Interface", InfoInterfaceCommand, false, null);
             AddItem("History", HistoryCommand, false, null);
             cm.Items.Add(new Separator { Style = separatorStyle });
-            
+            //Reset
+            AddItem("Reset Max Speed", ResetMaxSpeedCommand, false, null);
+            //History
+            AddItem("Reset History", ResetHistoryCommand, false, null);
+            cm.Items.Add(new Separator { Style = separatorStyle });
             AddItem("Quit", ExitCommand, false, new KeyGesture(Key.Q, ModifierKeys.Alt));
 
             //cm.Items.Add(new Separator { Style = separatorStyle });
@@ -194,12 +198,25 @@ namespace TrafficWatch.Control
         }
 
         public RelayCommand ExitCommand = new RelayCommand(Exit_Click);
+        
+
         public static void Exit_Click()
         {
             System.Windows.Application.Current.Shutdown();
             Environment.Exit(0);
         }
+        private readonly RelayCommand ResetMaxSpeedCommand = new RelayCommand(ResetMaxSpeed_Click);
 
+        private static void ResetMaxSpeed_Click()
+        {
+            PopWindow.Me.ResetMaxSpeed();
+        }
+        private readonly RelayCommand ResetHistoryCommand = new RelayCommand(ResetHistory_Click);
+
+        private static void ResetHistory_Click()
+        {
+            PopWindow.Me.ResetHistory();
+        }
         public void Cloce()
         {
             _trayIcon.Visible = false;

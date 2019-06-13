@@ -147,7 +147,7 @@ namespace TrafficWatch
         private void Timer_Tick(object sender, EventArgs e)
         {
             //Console.WriteLine("DispatcherTimer_Tick: " + DateTime.Now);
-            if (CheckHasFullScreenApp(out bool notSure))
+            if (CheckHasFullScreenApp(out _))
             {
                 //TimerHiddenEdge.IsEnabled = false;
                 HideAllView(true);
@@ -214,7 +214,7 @@ namespace TrafficWatch
                 // Grab NetworkInterface object that describes the current interface
                 NetworkInterface nic = goodAdapters[cmbInterface.SelectedIndex];
                 // Grab the stats for that interface
-                IPv4InterfaceStatistics interfaceStats = nic.GetIPv4Statistics();
+                //IPv4InterfaceStatistics interfaceStats = nic.GetIPv4Statistics();
                 // Update the labels
                 lblInterfaceType.Content = nic.NetworkInterfaceType.ToString();
 
@@ -233,8 +233,8 @@ namespace TrafficWatch
                 
                 if (!isEdgeHide)
                 {//Byte to kB/s
-                    Chart1.Downloaded(item.upload / 1024);
-                    Chart1.Uploaded(item.download / 1024);
+                    Chart1.Downloaded(item.download / 1024);
+                    Chart1.Uploaded(item.upload / 1024);
                 }
 
                 UnicastIPAddressInformationCollection ipInfo = nic.GetIPProperties().UnicastAddresses;
@@ -296,10 +296,22 @@ namespace TrafficWatch
         readonly List<ItemMaxDownload> ListMaxDownload = new List<ItemMaxDownload>();
         
         double MaxDownload = 0;
+        public void ResetMaxSpeed()
+        {
+            SetMaxDownload(0);
+        }
+        public void ResetHistory()
+        {
+            SetMaxDownload(0);
+            App._History.Data.Total = new DataHistory();
+            App._History.Data.Date = DateTime.Now;
+            App._History.Data.ListHistory.Clear();
+            App._History.Save();
+        }
         private int uCallBackMsg, taskBarCreatedMsg=0;
         private TimeSpan minSpan = new TimeSpan(2500000);// 0.2s
-        private TimeSpan maxSpan = new TimeSpan(0, 0, 7);
-        private TimeSpan spaceTimeSpan = new TimeSpan(7500000);
+        //private TimeSpan maxSpan = new TimeSpan(0, 0, 7);
+        //private TimeSpan spaceTimeSpan = new TimeSpan(7500000);
         private readonly DetailWindow detailWindow;
 
         public bool isEdgeHide = false;
