@@ -104,7 +104,9 @@ namespace TrafficWatch
             if (m == "1") Max(true); else Max(false);
             var h = Program.ReadSetting("Hiden", "0");
             if (h == "1") CreateAndHideWindow(); else CreateAndShowWindow();
-            double.TryParse(Program.ReadSetting("MaxDownload", "0"), out MaxDownload);
+            double temp = MaxDownload;
+            _=double.TryParse(Program.ReadSetting("MaxDownload", "0"), out temp);
+            MaxDownload = temp;
             SetMaxDownload(MaxDownload);
             //
             detailWindow = new DetailWindow(this);
@@ -294,8 +296,8 @@ namespace TrafficWatch
         Toster toster;
         double Mid = 0;
         readonly List<ItemMaxDownload> ListMaxDownload = new List<ItemMaxDownload>();
-        
-        double MaxDownload = 0;
+
+        private double maxDownload = 0;
         public void ResetMaxSpeed()
         {
             SetMaxDownload(0);
@@ -570,6 +572,9 @@ namespace TrafficWatch
         }
 
         public readonly Thickness windowMargin = new Thickness(-3, 3, -3, 0);
+
+        public double MaxDownload { get => maxDownload; set => maxDownload = value; }
+
         void ICanMoveDetailWindowToRightPlace.MoveDetailWindowToRightPlace(DetailWindow dw)
         {
             Thickness pa = windowMargin;

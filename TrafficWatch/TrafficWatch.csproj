@@ -90,6 +90,7 @@
     <Compile Include="Services\Detail\Tool.cs" />
     <Compile Include="Services\Detail\UDMap.cs" />
     <Compile Include="Services\Detail\WinAPIWrapper.cs" />
+    <Compile Include="Services\PersianCultureHelper.cs" />
     <Compile Include="View\Detail\DetailWindow.xaml.cs">
       <DependentUpon>DetailWindow.xaml</DependentUpon>
     </Compile>

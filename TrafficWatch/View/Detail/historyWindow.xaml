@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Foreground="{DynamicResource WindowForeground}"
         Background="{DynamicResource WindowBackground}"
-        Title="historyWindow" Height="263.243" Width="225.946"  AllowsTransparency="True" WindowStyle="None">
+        Title="historyWindow" Height="265" Width="230"  AllowsTransparency="True" WindowStyle="None">
     <Window.Resources>
         <SolidColorBrush x:Key="WindowForeground"
                          Color="Black" />
@@ -301,7 +301,7 @@
             </Grid.Effect>
         </Grid>
         <StackPanel>
-            <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Right"  VerticalAlignment="Top" Background="#CC515050">
+            <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Right"  VerticalAlignment="Top" Background="#CC515050" Margin="0,0,0,20">
                 <Button x:Name="ButtonMinimized" Width="45" Height="25" Foreground="#FFFFFBFB" Background="#02000000" Template="{DynamicResource ButtonMaxMinTemplate}" BorderBrush="{x:Null}" Click="ButtonMinimized_Click">
                     <Viewbox>
                         <Grid Width="48" Height="48" Visibility="Visible">
@@ -332,8 +332,12 @@
                     </Viewbox>
                 </Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
-                <TextBlock Text="Day Upload :" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="10,0"/>
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0" >
+                <TextBlock Text="Max Speed Download :"/>
+                <TextBlock Text="{Binding MaxSpeed, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,15,0,0">
+                <TextBlock Text="Day Upload :" HorizontalAlignment="Left" VerticalAlignment="Top" />
                 <TextBlock Text="{Binding Dayupload, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,15,0,0">

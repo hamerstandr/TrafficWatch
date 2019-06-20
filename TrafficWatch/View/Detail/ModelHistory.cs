@@ -57,13 +57,14 @@ namespace TrafficWatch.View.Detail
         {
             Totaldownload = Tool.ToString(App._History.Data.Total.Download);
             Totalupload = Tool.ToString(App._History.Data.Total.Upload);
-            if (index == 60)
+            if (index < 30 || index % 30 == 0)
             {
                 CallDay();
             }
-            else if (index == 300)//5 mitet
+            else if (index > 300)//5 minet
             {
                 CallMonth();
+                index = -1;
             }
             index++;
         }
@@ -72,31 +73,30 @@ namespace TrafficWatch.View.Detail
             int day = DateTime.Now.Day;
             dayd = 0; dayu = 0;
             var d = App._History.Data.ListHistory.Where(x => x.Date.Day == day).ToList();
-            WhereDay(d, day);
+            WhereDay(d);
             
         }
         void CallMonth()
         {
-            index = -1;
             int month = DateTime.Now.Month;
             monthd = 0; monthu = 0;
             var m = App._History.Data.ListHistory.Where(x => x.Date.Month == month).ToList();
-            WhereMonth(m, month);
+            WhereMonth(m);
         }
-        void WhereDay(List<DataHistory> ListData, int day)
+        void WhereDay(List<DataHistory> ListData)
         {
             foreach (DataHistory d in ListData)
             {
-                if (d.Date.Day == day) { dayd += d.Download; dayu += d.Upload; }
+                 dayd += d.Download; dayu += d.Upload; 
             }
             Daydownload = Tool.ToString(dayd);
             Dayupload = Tool.ToString(dayu);
         }
-        void WhereMonth(List<DataHistory> ListData, int Month)
+        void WhereMonth(List<DataHistory> ListData)
         {
             foreach (DataHistory d in ListData)
             {
-                if (d.Date.Month == Month) { monthd += d.Download; monthu += d.Upload; }
+                 monthd += d.Download; monthu += d.Upload; 
             }
             Monthupload = Tool.ToString(monthu);
             Monthdownload = Tool.ToString(monthd);
