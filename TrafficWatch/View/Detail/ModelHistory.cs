@@ -23,6 +23,8 @@ namespace TrafficWatch.View.Detail
         private string totalupload = "";
         private string daydownload = "";
         private string dayupload = "";
+        private string maxspeed = "";
+        public string MaxSpeed { get => maxspeed; set { maxspeed = value; OnPropertyChanged("MaxSpeed"); } }
         public string Totaldownload { get => totaldownload; set { totaldownload = value; OnPropertyChanged("Totaldownload"); } }
         public string Totalupload { get => totalupload; set { totalupload = value; OnPropertyChanged("Totalupload"); } }
 
@@ -41,6 +43,7 @@ namespace TrafficWatch.View.Detail
             Dayupload = Tool.ToString(0);
             Monthdownload = Tool.ToString(0);
             Monthupload = Tool.ToString(0);
+            MaxSpeed = Tool.ToString(0);
         }
         public void Initialize()
         {
@@ -55,6 +58,7 @@ namespace TrafficWatch.View.Detail
         double monthu = 0;
         private void Chenge(object sender, string e)
         {
+            MaxSpeed = Tool.ToString(PopWindow.Me.MaxDownload);
             Totaldownload = Tool.ToString(App._History.Data.Total.Download);
             Totalupload = Tool.ToString(App._History.Data.Total.Upload);
             if (index < 30 || index % 30 == 0)

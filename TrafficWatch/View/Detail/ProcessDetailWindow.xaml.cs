@@ -30,14 +30,14 @@ namespace TrafficWatch.View.Detail
 
         public ProcessDetailWindow(ProcessView tempP)
         {
-            this.process = tempP;
+            this.Process = tempP;
             InitializeComponent();
-            ProcessID.Text = process.ID + "";
-            if (process.SuccessGetInfo)
+            ProcessID.Text = Process.ID + "";
+            if (Process.SuccessGetInfo)
             {
-                ProcessName.Text = process.Name ?? Tool.GetStringResource("Unknown");
-                ProcessIcon.Source = process.Image;
-                if (process.FilePath == null && !Tool.IsAdministrator())
+                ProcessName.Text = Process.Name ?? Tool.GetStringResource("Unknown");
+                ProcessIcon.Source = Process.Image;
+                if (Process.FilePath == null && !Tool.IsAdministrator())
                 {
                     OpenButtonImage.Source = Imaging.CreateBitmapSourceFromHIcon(SystemIcons.Shield.Handle,
                         Int32Rect.Empty, BitmapSizeOptions.FromRotation(Rotation.Rotate0));
@@ -46,13 +46,13 @@ namespace TrafficWatch.View.Detail
                 }
                 else
                 {
-                    if (process.FilePath == null)
+                    if (Process.FilePath == null)
                     {
                         OpenButton.IsEnabled = false;
                     }
                     else
                     {
-                        ProcessPath.Text = process.FilePath;
+                        ProcessPath.Text = Process.FilePath;
                         OpenButton.Click += OpenButton_OpenPath_Click;
                     }
                 }
@@ -65,7 +65,7 @@ namespace TrafficWatch.View.Detail
 
         private void OpenButton_OpenPath_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("explorer.exe", "/select,\"" + process.FilePath + "\"");
+            System.Diagnostics.Process.Start("explorer.exe", "/select,\"" + Process.FilePath + "\"");
         }
 
         private void OpenButton_RunAsAdmin_Click(object sender, RoutedEventArgs e)
@@ -76,7 +76,7 @@ namespace TrafficWatch.View.Detail
                 string exe = GetType().Assembly.Location;
                 Process p = new Process
                 {
-                    StartInfo = new ProcessStartInfo(exe, "-processid " + process.ID)
+                    StartInfo = new ProcessStartInfo(exe, "-processid " + Process.ID)
                     {
                         Verb = "runas",
                     },
@@ -95,9 +95,11 @@ namespace TrafficWatch.View.Detail
 
         private ProcessView process;
 
+        public ProcessView Process { get => process; set => process = value; }
+
         private void Window_SourceInitialized(object sender, EventArgs e)
         {
-            if (!process.SuccessGetInfo)
+            if (!Process.SuccessGetInfo)
             {
                 Dispatcher.InvokeAsync(new Action(() =>
                 {
@@ -110,7 +112,7 @@ namespace TrafficWatch.View.Detail
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
 
-            Monitor.MonitorProcess w = new Monitor.MonitorProcess(process.ID);
+            Monitor.MonitorProcess w = new Monitor.MonitorProcess(Process.ID);
             w.Show();
         }
     }
