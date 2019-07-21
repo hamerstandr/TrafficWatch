@@ -1,0 +1,71 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" href="css/bulma.css">
+    <script src="js/jquery-3.4.1.js"></script>
+    <style>
+        body {
+            padding-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root" class="container">
+        <!--<message name="m1" title="title" body="Learn Vue1..." isvisibled="false"></message>
+        <message name="m2" title="hello wold" body="Learn Vue2..."></message>
+        <button @click="messageshow('m1')">m1 show</button>
+        <button @click="messageshow('m2')">m2 show</button>-->
+        <div>
+            <h1>
+                Max Speed :
+            </h1>
+            {{MaxSpeed}}
+        </div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script  src="js/Messege.js"></script>
+    <script>
+	var app=new Vue({
+	el:'#root',
+	data:{
+        Messages: Mes,
+        MaxSpeed:'0kb'
+	},
+	methods:{
+		messageshow(name){
+			Mes.forEach(element => {
+				if(name==element.name){
+					element.isVisible=true;
+				}
+			});
+        },
+        MaxSpeedShow() {
+            $.ajax({
+                type: 'GET',
+                url: '..\MaxSpeed',
+                success: function (html) {
+                    //alert(html);
+                    MaxSpeed = html;
+                }
+            });
+        }
+	},
+	computed:{
+
+	}
+	});
+        Vue.config.devtools = true;
+        function MaxSpeedShow() {
+            $.ajax({
+                type: 'GET',
+                url: '..\MaxSpeed',
+                success: function (html) {
+                    //alert(html);
+                    MaxSpeed = html;
+                }
+            });
+        }
+        MaxSpeedShow();
+    </script>
+</body>
+<html>

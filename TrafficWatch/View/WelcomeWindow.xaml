@@ -9,8 +9,6 @@
         Closing="Window_Closing"
         ResizeMode="NoResize"
         Loaded="Window_Loaded"
-        Topmost="True"
-        
         Title="WelcomeWindow" Height="240" Background="Transparent" Width="320" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
     <Border BorderThickness="0" CornerRadius="8" >
         <Border.Background>

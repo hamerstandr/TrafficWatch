@@ -1,0 +1,12 @@
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\bin\Debug\Resources\Pages\404.html
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\bin\Debug\Resources\Pages\500.html
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\bin\Debug\SimpleHttpServer.dll.config
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\bin\Debug\SimpleHttpServer.dll
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\bin\Debug\SimpleHttpServer.pdb
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\bin\Debug\log4net.dll
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\bin\Debug\log4net.xml
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\obj\Debug\SimpleHttpServer.csprojAssemblyReference.cache
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\obj\Debug\SimpleHttpServer.csproj.CoreCompileInputs.cache
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\obj\Debug\SimpleHttpServer.csproj.CopyComplete
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\obj\Debug\SimpleHttpServer.dll
+C:\Documents\Project\SimpleHttpServer\SimpleHttpServer\obj\Debug\SimpleHttpServer.pdb

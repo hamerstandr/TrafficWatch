@@ -1,5 +1,4 @@
-﻿using PersianCulture;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -51,7 +50,10 @@ namespace TrafficWatch
             if(TrafficWatch.Properties.Settings.Default.Startup)
                 Program.SetStartup();
             Init();
+            _Server = new Server();
+            _Server.Start();
         }
+        Server _Server;
         #region Show Trafick
         void Init()
         {

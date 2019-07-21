@@ -186,6 +186,7 @@ namespace TrafficWatch
             refresh++;
             //update Ui
             UpdateUi(statistics, statistics.timeSpan);
+            State = statistics;
             //set max download
             if (statistics.download > MaxDownload)
             {
@@ -205,6 +206,7 @@ namespace TrafficWatch
             //}
             
         }
+        public UDStatistic State;
         /// <summary>
         /// Update GUI components for the network interfaces
         /// </summary>
@@ -328,7 +330,7 @@ namespace TrafficWatch
             if (hide)
             {
                 Hide();
-                detailWindow.OthersWantHide(true);
+                detailWindow?.OthersWantHide(true);
             }
             else
             {
