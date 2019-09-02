@@ -10,3 +10,7 @@ Watch Traffic And Monitor Network
 download .Net 4.6.1 [Link](https://dotnet.microsoft.com/download/thank-you/net461)
 
 ![Screen](https://github.com/hamerstandr/TrafficWatch/blob/master/img/Screen.png?raw=true)
+Server for Show state Traffice System In Page
+Connect To Server
+* http://127.0.0.1:8080/state/index.html
+
