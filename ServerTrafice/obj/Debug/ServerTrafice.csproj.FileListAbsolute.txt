@@ -50,3 +50,8 @@ C:\Documents\GitHub\TrafficWatch\ServerTrafice\Bin\Debug\LiveCharts.pdb
 C:\Documents\GitHub\TrafficWatch\ServerTrafice\Bin\Debug\LiveCharts.xml
 C:\Documents\GitHub\TrafficWatch\ServerTrafice\Bin\Debug\LiveCharts.Wpf.pdb
 C:\Documents\GitHub\TrafficWatch\ServerTrafice\Bin\Debug\LiveCharts.Wpf.xml
+C:\Documents\GitHub\TrafficWatch\ServerTrafice\Bin\Debug\Resources\Pages\fonts\glyphicons-halflings-regular.eot
+C:\Documents\GitHub\TrafficWatch\ServerTrafice\Bin\Debug\Resources\Pages\fonts\glyphicons-halflings-regular.ttf
+C:\Documents\GitHub\TrafficWatch\ServerTrafice\Bin\Debug\Resources\Pages\fonts\glyphicons-halflings-regular.woff
+C:\Documents\GitHub\TrafficWatch\ServerTrafice\Bin\Debug\Resources\Pages\fonts\glyphicons-halflings-regulard41d.eot
+C:\Documents\GitHub\TrafficWatch\ServerTrafice\Bin\Debug\Resources\Pages\fonts\glyphicons-halflings-regular.svg

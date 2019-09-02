@@ -109,3 +109,8 @@ C:\Documents\GitHub\TrafficWatch\TrafficWatch\Bin\Debug\Resources\Pages\js\Messe
 C:\Documents\GitHub\TrafficWatch\TrafficWatch\Bin\Debug\Resources\Pages\js\app.js
 C:\Documents\GitHub\TrafficWatch\TrafficWatch\Bin\Debug\Resources\Pages\Image\favicon.ico
 C:\Documents\GitHub\TrafficWatch\TrafficWatch\Bin\Debug\Resources\Pages\css\My.css
+C:\Documents\GitHub\TrafficWatch\TrafficWatch\Bin\Debug\Resources\Pages\fonts\glyphicons-halflings-regular.eot
+C:\Documents\GitHub\TrafficWatch\TrafficWatch\Bin\Debug\Resources\Pages\fonts\glyphicons-halflings-regular.ttf
+C:\Documents\GitHub\TrafficWatch\TrafficWatch\Bin\Debug\Resources\Pages\fonts\glyphicons-halflings-regular.woff
+C:\Documents\GitHub\TrafficWatch\TrafficWatch\Bin\Debug\Resources\Pages\fonts\glyphicons-halflings-regulard41d.eot
+C:\Documents\GitHub\TrafficWatch\TrafficWatch\Bin\Debug\Resources\Pages\fonts\glyphicons-halflings-regular.svg

@@ -30,10 +30,10 @@
         function callUpload(response) {
             app.Upload = response.data;
             console.log(app.Upload);
-            indexUpload += 100;
-            if (indexUpload > 50000)
-                indexUpload = 10000;
-            setInterval(UploadUpdate, indexUpload);
+            //indexUpload += 100;
+            //if (indexUpload > 50000)
+            //    indexUpload = 10000;
+            //setInterval(UploadUpdate, indexUpload);
         }
         function DownloadUpdate() {
             axios.get('../Download').then(response => callDownload(response));
@@ -43,10 +43,10 @@
         function callDownload(response) {
             app.Download = response.data;
             console.log(app.Download);
-            indexDownload += 100;
-            if (indexDownload > 80000)
-                indexDownload = 20000;
-            setInterval(DownloadUpdate, indexDownload);
+            //indexDownload += 100;
+            //if (indexDownload > 80000)
+            //    indexDownload = 20000;
+            //setInterval(DownloadUpdate, indexDownload);
         }
 
         // // GET request for remote image

@@ -70,6 +70,7 @@ namespace TrafficWatch
         int refresh = 11;
 
         #endregion
+        
         private readonly Control.TrayIcon _trayIcon;
         public static PopWindow Me;
         public PopWindow()
@@ -126,8 +127,7 @@ namespace TrafficWatch
         }
         #region Detail + Edge
         readonly System.Windows.Threading.DispatcherTimer TimerHiddenEdge = new System.Windows.Threading.DispatcherTimer();
-        
-        
+
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);

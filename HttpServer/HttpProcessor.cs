@@ -100,14 +100,19 @@ namespace HttpServer
         {
             int next_char;
             string data = "";
-            while (true)
+            try
             {
-                next_char = stream.ReadByte();
-                if (next_char == '\n') { break; }
-                if (next_char == '\r') { continue; }
-                if (next_char == -1) { Thread.Sleep(1); continue; };
-                data += Convert.ToChar(next_char);
+                while (true)
+                {
+                    next_char = stream.ReadByte();
+                    if (next_char == '\n') { break; }
+                    if (next_char == '\r') { continue; }
+                    if (next_char == -1) { Thread.Sleep(1); continue; };
+                    data += Convert.ToChar(next_char);
+                }
             }
+            catch { }
+            
             return data;
         }
 

@@ -27,7 +27,8 @@ namespace TrafficWatch.Services.Detail
         //[DllImport("User32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]   
         //  public static extern void SetWindowLong(IntPtr handle, int oldStyle, long newStyle);  
         public static extern long SetWindowLong(IntPtr handle, int oldStyle, IntPtr newStyle);
-
+        [DllImport("user32.dll")]
+        public static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
         /// <summary>  
         /// 获取窗体指定的样式.  
         /// </summary>  

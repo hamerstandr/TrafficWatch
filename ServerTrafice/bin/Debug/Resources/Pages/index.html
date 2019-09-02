@@ -1,7 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Stats System</title>
+    <title>States System</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="shortcut icon" href="Image/favicon.ico">
     <link rel="stylesheet" href="css/bulma.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -14,18 +15,28 @@
     </style>
 </head>
 <body>
-    <div id="root" class="center row">
+    <div id="root" class="center">
         <!--<message name="m1" title="title" body="Learn Vue1..." isvisibled="false"></message>
         <message name="m2" title="hello wold" body="Learn Vue2..."></message>
         <button @click="messageshow('m1')">m1 show</button>
         <button @click="messageshow('m2')">m2 show</button>-->
-        <div class="col-lg">
 
-        </div>
-        <div class="col-lg">
+        <div class="Main">
+
             <article class="card">
                 <div class="card-header">
-                    <p>Staits System</p>
+                    <div class="form-group">
+                        <label for="Refreshbutton">State System</label>
+                        <div aria-label="Refreshbutton" class="btn-group" role="group" aria-label="State System">
+                            <button type="button" class="btn btn-secondary" @click="ClickDownload()">
+                                <span class="glyphicon glyphicon-refresh" aria-hidden="true">Download</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" @click="ClickUpdate()">
+                                <span class="glyphicon glyphicon-refresh" aria-hidden="true">Upload</span>
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="card-body">
                     Download : {{Download}}
@@ -46,9 +57,7 @@
         </div>
 
 
-        <div class="col-lg">
 
-        </div>
     </div>
     <script src="js/axios.js"></script>
     <script src="js/vue.js"></script>

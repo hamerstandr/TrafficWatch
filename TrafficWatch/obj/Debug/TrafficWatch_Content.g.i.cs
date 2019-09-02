@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/pages/image/favicon.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/pages/fonts/glyphicons-halflings-regular.svg")]
 
 

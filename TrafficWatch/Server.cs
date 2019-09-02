@@ -46,7 +46,7 @@ namespace TrafficWatch
                 new Route()
                     {
                         Callable = new FileSystemRouteHandler() { BasePath =Path+ @"\Resources\Pages\"}.Handle,
-                        UrlRegex = "^\\/Static\\/(.*)$",
+                        UrlRegex = "^\\/state\\/(.*)$",
                         Method = "GET"
                     },
                 new Route {
