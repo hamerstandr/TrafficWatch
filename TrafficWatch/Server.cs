@@ -2,9 +2,7 @@
 using HttpServer.RouteHandlers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 using TrafficWatch.Services.Detail;
 
@@ -15,7 +13,7 @@ namespace TrafficWatch
         readonly string Path;
         private Thread thread;
         readonly TrafficWatch.View.Detail.ModelHistory History = new TrafficWatch.View.Detail.ModelHistory();
-        HttpServer.HttpServer httpServer;
+        readonly HttpServer.HttpServer httpServer;
         public Server()
         {
             log4net.Config.XmlConfigurator.Configure();

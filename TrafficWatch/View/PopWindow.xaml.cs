@@ -1,29 +1,20 @@
-﻿using EarTrumpet;
+﻿
 using EarTrumpet.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 using TrafficWatch.Control;
 using TrafficWatch.Extensions;
 using TrafficWatch.Properties;
 using TrafficWatch.Services.Detail;
 using TrafficWatch.View;
+using WindowsDesktop;
 
 namespace TrafficWatch
 {
@@ -117,7 +108,8 @@ namespace TrafficWatch
                 ItemsSource = _trayIcon.BuildContextMenu(false).Items
             };
             //this.ContextMenu = menu;
-            
+            App.Pin(this);
+
         }
         internal void TopWindows()
         {
@@ -871,5 +863,6 @@ namespace TrafficWatch
         {
             _trayIcon.Cloce();
         }
+        
     }
 }

@@ -9,7 +9,7 @@ namespace TrafficWatch
     public class History
     {
         public Data Data = new Data();
-        string PathFileData;
+        readonly string PathFileData;
         DataHistory Now;
         public History()
         {
@@ -64,21 +64,31 @@ IsNullable = false)]
 
         public static Data Load(string path)
         {
-            XmlSerializer s = new XmlSerializer(typeof(Data));
-            if (File.Exists(path))
-                using (StreamReader reader = new StreamReader(path))
-                {
-                    object obj = s.Deserialize(reader);
-                    return (Data)obj;
-                }
-            else
+            try {
+                XmlSerializer s = new XmlSerializer(typeof(Data));
+                if (File.Exists(path))
+                    using (StreamReader reader = new StreamReader(path))
+                    {
+                        object obj = s.Deserialize(reader);
+                        return (Data)obj;
+                    }
+                else
+                    return new Data()
+                    {
+                        ListHistory = new List<DataHistory>(),
+                        Total = new DataHistory(),
+                        Date = DateTime.Now
+                    };
+            }
+            catch {
                 return new Data()
                 {
                     ListHistory = new List<DataHistory>(),
                     Total = new DataHistory(),
                     Date = DateTime.Now
                 };
-
+            }
+            
         }
     }
     public class DataHistory

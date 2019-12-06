@@ -1,18 +1,10 @@
 ﻿using EarTrumpet.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace TrafficWatch
 {
@@ -26,6 +18,7 @@ namespace TrafficWatch
             InitializeComponent();
             Init();
             Network();
+            App.Pin(this);
             //CmbInterface
         }
         void Network()
@@ -110,8 +103,8 @@ namespace TrafficWatch
                     X = Convert.ToInt16(this.Left) + MousePosition.X,
                     Y = Convert.ToInt16(this.Top) + MousePosition.Y
                 };
-                this.Left = this.Left + (MousePositionAbs.X - this.lmAbs.X);
-                this.Top = this.Top + (MousePositionAbs.Y - this.lmAbs.Y);
+                Left = this.Left + (MousePositionAbs.X - this.lmAbs.X);
+                Top = this.Top + (MousePositionAbs.Y - this.lmAbs.Y);
                 this.lmAbs = MousePositionAbs;
             }
         }

@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
+using TrafficWatch.Extensions;
 using TrafficWatch.Properties;
 using TrafficWatch.Services.Detail;
+using WindowsDesktop;
 
 namespace TrafficWatch
 {
@@ -20,19 +18,28 @@ namespace TrafficWatch
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            InitializeComponent();
+            _History = new History();
+            udMap = new UDMap();
+            portProcessMap = PortProcessMap.GetInstance();
+            timer = new System.Timers.Timer
+            {
+                Interval = 1000,
+                AutoReset = true
+            };
+        }
         private Mutex _mMutex;
-        private readonly PortProcessMap portProcessMap = PortProcessMap.GetInstance();
+        private readonly PortProcessMap portProcessMap ;
         public bool screenLengthMaxOne = false;
         //public System.Windows.Forms.MenuItem menuExit, menuEdgeHide, menuShowTrayIcon, menuStartOnBoot, menuTransparency, menuAutoUpdate, menuCheckUpdate, menuAbout, History;
         private CaptureManager captureManager;
-        private readonly UDMap udMap = new UDMap();
+        private readonly UDMap udMap ;
         int index = 0;
-        public static History _History = new History();
-        private readonly System.Timers.Timer timer = new System.Timers.Timer
-        {
-            Interval = 1000,
-            AutoReset = true
-        }; private View.WelcomeWindow welcomeWindow;
+        public static History _History ;
+        private readonly System.Timers.Timer timer;
+        private View.WelcomeWindow welcomeWindow;
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             //MessageBox.Show("App");
@@ -83,9 +90,28 @@ namespace TrafficWatch
                 }
             }));
             t.Start();
-
+            //if(VersionHelper.IsWindows10OrGreater())
+            //    PinAllVirtualDesktop();
 
         }
+        public static void Pin(Window w)
+        {
+            if (VersionHelper.IsWindows10OrGreater())
+                if (!w.IsPinned())
+                    w.Pin();
+        }
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
+
+        //private void PinAllVirtualDesktop()
+        //{
+        //       var appId = ApplicationHelper.GetAppId(GetForegroundWindow());
+        //    if (!VirtualDesktop.IsPinnedApplication(appId))
+        //    {
+        //       VirtualDesktop.PinApplication(appId);
+        //    }
+        //    //(VirtualDesktop.IsPinnedApplication(appId) ? VirtualDesktop.UnpinApplication : (Action<string>)VirtualDesktop.PinApplication)(appId);
+        //}
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             UDStatistic statistics = udMap.NextStatistic(10, portProcessMap);
@@ -105,7 +131,7 @@ namespace TrafficWatch
         public static bool IsWindows8orhigher()
         {
             Version win8version = new Version(6, 2, 9200, 0);
-
+            
             if (Environment.OSVersion.Platform == PlatformID.Win32NT &&
                 Environment.OSVersion.Version >= win8version)
             {

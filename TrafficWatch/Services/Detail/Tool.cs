@@ -1,12 +1,8 @@
 ﻿using PacketDotNet;
 using SharpPcap;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 
@@ -125,27 +121,27 @@ namespace TrafficWatch.Services.Detail
                 double heightSpan = rect.Bottom - workArea.Bottom;
                 if (heightSpan > 0)
                 {
-                    window.Top = window.Top - heightSpan;
+                    window.Top -= heightSpan;
                 }
                 else
                 {
                     heightSpan = workArea.Top - rect.Top;
                     if (heightSpan > 0)
                     {
-                        window.Top = window.Top + heightSpan;
+                        window.Top += heightSpan;
                     }
                 }
                 double widthSpan = rect.Right - workArea.Right;
                 if (widthSpan > 0)
                 {
-                    window.Left = window.Left - widthSpan;
+                    window.Left -= widthSpan;
                 }
                 else
                 {
                     widthSpan = workArea.Left - rect.Left;
                     if (widthSpan > 0)
                     {
-                        window.Left = window.Left + widthSpan;
+                        window.Left += widthSpan;
                     }
                 }
                 return true;

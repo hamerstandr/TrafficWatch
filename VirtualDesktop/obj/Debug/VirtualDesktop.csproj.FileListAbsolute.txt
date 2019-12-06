@@ -1,0 +1,11 @@
+C:\Documents\GitHub\VirtualDesktop\source\VirtualDesktop\obj\Debug\VirtualDesktop.csprojAssemblyReference.cache
+C:\Documents\GitHub\VirtualDesktop\source\VirtualDesktop\bin\Debug\VirtualDesktop.dll.config
+C:\Documents\GitHub\VirtualDesktop\source\VirtualDesktop\bin\Debug\VirtualDesktop.dll
+C:\Documents\GitHub\VirtualDesktop\source\VirtualDesktop\bin\Debug\VirtualDesktop.pdb
+C:\Documents\GitHub\VirtualDesktop\source\VirtualDesktop\obj\Debug\VirtualDesktop.dll
+C:\Documents\GitHub\VirtualDesktop\source\VirtualDesktop\obj\Debug\VirtualDesktop.pdb
+C:\Documents\GitHub\TrafficWatch\VirtualDesktop\bin\Debug\VirtualDesktop.dll.config
+C:\Documents\GitHub\TrafficWatch\VirtualDesktop\bin\Debug\VirtualDesktop.dll
+C:\Documents\GitHub\TrafficWatch\VirtualDesktop\bin\Debug\VirtualDesktop.pdb
+C:\Documents\GitHub\TrafficWatch\VirtualDesktop\obj\Debug\VirtualDesktop.dll
+C:\Documents\GitHub\TrafficWatch\VirtualDesktop\obj\Debug\VirtualDesktop.pdb
