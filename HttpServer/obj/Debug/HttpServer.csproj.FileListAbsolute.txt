@@ -7,3 +7,4 @@ C:\Documents\GitHub\TrafficWatch\HttpServer\bin\Debug\log4net.xml
 C:\Documents\GitHub\TrafficWatch\HttpServer\obj\Debug\HttpServer.csproj.CopyComplete
 C:\Documents\GitHub\TrafficWatch\HttpServer\obj\Debug\HttpServer.dll
 C:\Documents\GitHub\TrafficWatch\HttpServer\obj\Debug\HttpServer.pdb
+C:\Documents\GitHub\TrafficWatch\HttpServer\obj\Debug\HttpServer.csprojAssemblyReference.cache
