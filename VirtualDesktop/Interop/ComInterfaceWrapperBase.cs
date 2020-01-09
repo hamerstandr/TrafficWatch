@@ -57,7 +57,8 @@ namespace WindowsDesktop.Interop
 			}
 			catch (TargetInvocationException ex) when (ex.InnerException != null)
 			{
-				throw ex.InnerException;
+				//throw ex.InnerException;
+				return (T)methodInfo.Invoke(null,null);
 			}
 		}
 	}
