@@ -1,5 +1,4 @@
-﻿using EarTrumpet.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +22,8 @@ namespace TrafficWatch
     {
         public MainWindow()
         {
-            MessageBox.Show("MainWindow s");
-            InitializeComponent(); Init();
-            MessageBox.Show("MainWindow E");
+            InitializeComponent(); 
+            Init();
         }
         #region theme
         private bool clicked = false;

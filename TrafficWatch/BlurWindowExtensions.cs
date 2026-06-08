@@ -1,5 +1,4 @@
-﻿using EarTrumpet.Services;
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
@@ -124,21 +123,21 @@ namespace TrafficWatch
         {
             var flags = Interop.AccentFlags.DrawAllBorders;
 
-            switch (TaskbarService.GetWinTaskbarState().TaskbarPosition)
+            switch (Services.TaskbarService.GetWinTaskbarState().TaskbarPosition)
             {
-                case TaskbarPosition.Top:
+                case Services.TaskbarPosition.Top:
                     flags &= ~Interop.AccentFlags.DrawTopBorder;
                     break;
 
-                case TaskbarPosition.Bottom:
+                case Services.TaskbarPosition.Bottom:
                     flags &= ~Interop.AccentFlags.DrawBottomBorder;
                     break;
 
-                case TaskbarPosition.Left:
+                case Services.TaskbarPosition.Left:
                     flags &= ~Interop.AccentFlags.DrawLeftBorder;
                     break;
 
-                case TaskbarPosition.Right:
+                case Services.TaskbarPosition.Right:
                     flags &= ~Interop.AccentFlags.DrawRightBorder;
                     break;
             }

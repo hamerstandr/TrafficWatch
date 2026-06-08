@@ -1,5 +1,5 @@
 ﻿
-namespace EarTrumpet.Services
+namespace TrafficWatch.Services
 {
     public static class UserPreferencesService
     {

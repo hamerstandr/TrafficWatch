@@ -1,5 +1,4 @@
-﻿using EarTrumpet.Services;
-using TrafficWatch.Properties;
+﻿using TrafficWatch.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

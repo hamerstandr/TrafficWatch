@@ -1,1 +1,39 @@
-Nothing should be ignored based on the provided file changes, as they only include source files (.md, .html, .js) without any build artifacts, dependencies, or temporary files.
+```
+# Build artifacts
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.userprefs
+
+# Dependencies
+packages/
+node_modules/
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# User preferences
+*.user
+*.userosscache
+*.suo
+
+# Test results
+TestResults/
+```

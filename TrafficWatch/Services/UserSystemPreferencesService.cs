@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 
-namespace EarTrumpet.Services
+namespace TrafficWatch.Services
 {
     public static class UserSystemPreferencesService
     {
@@ -10,7 +10,7 @@ namespace EarTrumpet.Services
             {
                 using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
                 {
-                    return (int)baseKey.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize").GetValue("EnableTransparency", 0) > 0;
+                    return (int)baseKey.OpenSubKey(@"Software\Microsoft\Windows\\CurrentVersion\Themes\Personalize").GetValue("EnableTransparency", 0) > 0;
                 }
             }
         }
@@ -21,7 +21,7 @@ namespace EarTrumpet.Services
             {
                 using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
                 {
-                    return (int)baseKey.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize").GetValue("ColorPrevalence", 0) > 0;
+                    return (int)baseKey.OpenSubKey(@"Software\Microsoft\Windows\\CurrentVersion\Themes\Personalize").GetValue("ColorPrevalence", 0) > 0;
                 }
             }
         }
