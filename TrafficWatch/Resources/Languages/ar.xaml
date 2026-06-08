@@ -1,0 +1,58 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
+    <!-- General -->
+    <sys:String x:Key="AppTitle">TrafficWatch - مراقب حركة الشبكة</sys:String>
+    <sys:String x:Key="Settings">الإعدادات</sys:String>
+    <sys:String x:Key="Exit">خروج</sys:String>
+    <sys:String x:Key="Show">عرض</sys:String>
+    <sys:String x:Key="Hide">إخفاء</sys:String>
+    <sys:String x:Key="About">حول</sys:String>
+    
+    <!-- Network -->
+    <sys:String x:Key="Interface">واجهة الشبكة</sys:String>
+    <sys:String x:Key="InterfaceType">نوع الواجهة</sys:String>
+    <sys:String x:Key="IPAddress">عنوان IP</sys:String>
+    <sys:String x:Key="Download">تنزيل</sys:String>
+    <sys:String x:Key="Upload">رفع</sys:String>
+    <sys:String x:Key="Speed">السرعة</sys:String>
+    <sys:String x:Key="SpeedDownload">سرعة التنزيل</sys:String>
+    <sys:String x:Key="SpeedUpload">سرعة الرفع</sys:String>
+    <sys:String x:Key="AllTrafficSend">إجمالي الحركة المرسلة</sys:String>
+    <sys:String x:Key="AllTrafficReceived">إجمالي الحركة المستلمة</sys:String>
+    
+    <!-- Statistics -->
+    <sys:String x:Key="MaxSpeed">أقصى سرعة</sys:String>
+    <sys:String x:Key="TodayDownload">تنزيل اليوم</sys:String>
+    <sys:String x:Key="TodayUpload">رفع اليوم</sys:String>
+    <sys:String x:Key="MonthDownload">تنزيل الشهر</sys:String>
+    <sys:String x:Key="MonthUpload">رفع الشهر</sys:String>
+    <sys:String x:Key="TotalDownload">إجمالي التنزيل</sys:String>
+    <sys:String x:Key="TotalUpload">إجمالي الرفع</sys:String>
+    
+    <!-- Settings Panel -->
+    <sys:String x:Key="Language">اللغة</sys:String>
+    <sys:String x:Key="StartupOnBoot">التشغيل عند بدء ويندوز</sys:String>
+    <sys:String x:Key="Transparency">شفافية النافذة</sys:String>
+    <sys:String x:Key="AutoUpdate">تحديث تلقائي</sys:String>
+    <sys:String x:Key="ShowTrayIcon">عرض أيقونة الدرج</sys:String>
+    <sys:String x:Key="WebServerEnabled">تفعيل خادم الويب</sys:String>
+    <sys:String x:Key="HttpPort">منفذ خادم الويب</sys:String>
+    <sys:String x:Key="EdgeHide">إخفاء الحافة</sys:String>
+    <sys:String x:Key="Theme">السمة</sys:String>
+    <sys:String x:Key="Dark">داكن</sys:String>
+    <sys:String x:Key="Light">فاتح</sys:String>
+    <sys:String x:Key="System">النظام</sys:String>
+    
+    <!-- Web Dashboard -->
+    <sys:String x:Key="WebDashboard">لوحة تحكم الويب</sys:String>
+    <sys:String x:Key="OpenInBrowser">فتح في المتصفح</sys:String>
+    <sys:String x:Key="RealTimeMonitoring">المراقبة في الوقت الحقيقي</sys:String>
+    
+    <!-- Messages -->
+    <sys:String x:Key="WinPcapNotFound">لم يتم العثور على WinPcap. يرجى تثبيته.</sys:String>
+    <sys:String x:Key="RestartRequired">إعادة التشغيل مطلوبة لتطبيق التغييرات.</sys:String>
+    <sys:String x:Key="SettingsSaved">تم حفظ الإعدادات.</sys:String>
+    
+</ResourceDictionary>

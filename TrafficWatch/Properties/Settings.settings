@@ -17,5 +17,23 @@
     <Setting Name="edgeHide" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="WebServerEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Language" Type="System.String" Scope="User">
+      <Value Profile="(Default)">fa</Value>
+    </Setting>
+    <Setting Name="Transparency" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AutoUpdate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ShowTrayIcon" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="HttpPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8080</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

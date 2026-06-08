@@ -1,0 +1,58 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
+    <!-- General -->
+    <sys:String x:Key="AppTitle">TrafficWatch - Network Traffic Monitor</sys:String>
+    <sys:String x:Key="Settings">Settings</sys:String>
+    <sys:String x:Key="Exit">Exit</sys:String>
+    <sys:String x:Key="Show">Show</sys:String>
+    <sys:String x:Key="Hide">Hide</sys:String>
+    <sys:String x:Key="About">About</sys:String>
+    
+    <!-- Network -->
+    <sys:String x:Key="Interface">Network Interface</sys:String>
+    <sys:String x:Key="InterfaceType">Interface Type</sys:String>
+    <sys:String x:Key="IPAddress">IP Address</sys:String>
+    <sys:String x:Key="Download">Download</sys:String>
+    <sys:String x:Key="Upload">Upload</sys:String>
+    <sys:String x:Key="Speed">Speed</sys:String>
+    <sys:String x:Key="SpeedDownload">Download Speed</sys:String>
+    <sys:String x:Key="SpeedUpload">Upload Speed</sys:String>
+    <sys:String x:Key="AllTrafficSend">Total Traffic Sent</sys:String>
+    <sys:String x:Key="AllTrafficReceived">Total Traffic Received</sys:String>
+    
+    <!-- Statistics -->
+    <sys:String x:Key="MaxSpeed">Max Speed</sys:String>
+    <sys:String x:Key="TodayDownload">Today Download</sys:String>
+    <sys:String x:Key="TodayUpload">Today Upload</sys:String>
+    <sys:String x:Key="MonthDownload">Month Download</sys:String>
+    <sys:String x:Key="MonthUpload">Month Upload</sys:String>
+    <sys:String x:Key="TotalDownload">Total Download</sys:String>
+    <sys:String x:Key="TotalUpload">Total Upload</sys:String>
+    
+    <!-- Settings Panel -->
+    <sys:String x:Key="Language">Language</sys:String>
+    <sys:String x:Key="StartupOnBoot">Start on Windows Boot</sys:String>
+    <sys:String x:Key="Transparency">Window Transparency</sys:String>
+    <sys:String x:Key="AutoUpdate">Auto Update</sys:String>
+    <sys:String x:Key="ShowTrayIcon">Show Tray Icon</sys:String>
+    <sys:String x:Key="WebServerEnabled">Enable Web Server</sys:String>
+    <sys:String x:Key="HttpPort">Web Server Port</sys:String>
+    <sys:String x:Key="EdgeHide">Edge Hide</sys:String>
+    <sys:String x:Key="Theme">Theme</sys:String>
+    <sys:String x:Key="Dark">Dark</sys:String>
+    <sys:String x:Key="Light">Light</sys:String>
+    <sys:String x:Key="System">System</sys:String>
+    
+    <!-- Web Dashboard -->
+    <sys:String x:Key="WebDashboard">Web Dashboard</sys:String>
+    <sys:String x:Key="OpenInBrowser">Open in Browser</sys:String>
+    <sys:String x:Key="RealTimeMonitoring">Real-time Monitoring</sys:String>
+    
+    <!-- Messages -->
+    <sys:String x:Key="WinPcapNotFound">WinPcap not found. Please install it.</sys:String>
+    <sys:String x:Key="RestartRequired">Restart required to apply changes.</sys:String>
+    <sys:String x:Key="SettingsSaved">Settings saved.</sys:String>
+    
+</ResourceDictionary>
