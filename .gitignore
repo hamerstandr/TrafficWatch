@@ -1,49 +1,8 @@
 ```
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.o
-*.obj
-*.exe
-*.dll
-*.so
-*.class
-*.out
+# Service worker and manifest should not be ignored as they are part of the web app deployment
+# TrafficWatch/Resources/Pages/sw.js
+# TrafficWatch/Resources/Pages/manifest.json
 
-# Dependencies
-node_modules/
-venv/
-.venv/
-.env
-.env.local
-*.env.*
-
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-*.swo
-
-# Editors
-.vscode/
-.idea/
-
-# Build directories
-dist/
-build/
-target/
-.gradle/
-
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# System files
-.DS_Store
-Thumbs.db
-
-# Cache directories
-.mypy_cache/
-.pytest_cache/
+# No build artifacts, dependencies, or temporary files detected in changes
+# Only source/config files were modified (HTML, CSS, JS, MD)
 ```
