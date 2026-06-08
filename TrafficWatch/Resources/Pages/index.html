@@ -1,67 +1,120 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 <head>
-    <title>States System</title>
+    <title>وضعیت سیستم - TrafficWatch</title>
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="shortcut icon" href="Image/favicon.ico">
     <link rel="stylesheet" href="css/bulma.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/My.css">
-    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/vue.js"></script>
     <style>
         body {
             padding-top: 40px;
+            font-family: Tahoma, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+        .stat-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .stat-value {
+            color: #667eea;
+            font-weight: bold;
+        }
+        .btn-refresh {
+            transition: all 0.3s ease;
+        }
+        .btn-refresh:hover {
+            transform: rotate(360deg);
+        }
+        .header-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
     </style>
 </head>
 <body>
-    <div id="root" class="center">
-        <!--<message name="m1" title="title" body="Learn Vue1..." isvisibled="false"></message>
-        <message name="m2" title="hello wold" body="Learn Vue2..."></message>
-        <button @click="messageshow('m1')">m1 show</button>
-        <button @click="messageshow('m2')">m2 show</button>-->
-
+    <div id="root">
+        <h1 class="title header-title">📊 وضعیت ترافیک شبکه</h1>
+        
         <div class="Main">
-
             <article class="card">
                 <div class="card-header">
-                    <div class="form-group">
-                        <label for="Refreshbutton">State System</label>
-                        <div aria-label="Refreshbutton" class="btn-group" role="group" aria-label="State System">
-                            <button type="button" class="btn btn-secondary" @click="ClickDownload()">
-                                <span class="glyphicon glyphicon-refresh" aria-hidden="true">Download</span>
+                    <div class="form-group" style="width: 100%; padding: 15px;">
+                        <label for="Refreshbutton" style="font-size: 1.2em; font-weight: bold;">مانیتورینگ لحظه‌ای</label>
+                        <div aria-label="Refreshbutton" class="btn-group" role="group" aria-label="State System" style="margin-top: 10px;">
+                            <button type="button" class="btn btn-primary btn-refresh" @click="ClickDownload()">
+                                <span class="glyphicon glyphicon-refresh" aria-hidden="true">📥 دانلود</span>
                             </button>
-                            <button type="button" class="btn btn-secondary" @click="ClickUpdate()">
-                                <span class="glyphicon glyphicon-refresh" aria-hidden="true">Upload</span>
+                            <button type="button" class="btn btn-success btn-refresh" @click="ClickUpdate()">
+                                <span class="glyphicon glyphicon-refresh" aria-hidden="true">📤 آپلود</span>
                             </button>
                         </div>
                     </div>
-
                 </div>
-                <div class="card-body">
-                    Download : {{Download}}
-                    <br />
-                    Upload : {{Upload}}
+                <div class="card-body" style="padding: 20px;">
+                    <div class="stat-item">
+                        <span class="stat-label">سرعت دانلود:</span>
+                        <span class="stat-value">{{Download}}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">سرعت آپلود:</span>
+                        <span class="stat-value">{{Upload}}</span>
+                    </div>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Max Speed : {{MaxSpeed}}</li>
-                    <li class="list-group-item">Today download : {{Daydownload}}</li>
-                    <li class="list-group-item">Today Upload : {{Dayupload}}</li>
-                    <li class="list-group-item">Month Download : {{Monthdownload}}</li>
-                    <li class="list-group-item">Month Upload : {{Monthupload}}</li>
-                    <li class="list-group-item">Total Download : {{Totaldownload}}</li>
-                    <li class="list-group-item">Total Upload : {{Totalupload}}</li>
+                    <li class="list-group-item stat-item">
+                        <span class="stat-label">حداکثر سرعت:</span>
+                        <span class="stat-value">{{MaxSpeed}}</span>
+                    </li>
+                    <li class="list-group-item stat-item">
+                        <span class="stat-label">دانلود امروز:</span>
+                        <span class="stat-value">{{Daydownload}}</span>
+                    </li>
+                    <li class="list-group-item stat-item">
+                        <span class="stat-label">آپلود امروز:</span>
+                        <span class="stat-value">{{Dayupload}}</span>
+                    </li>
+                    <li class="list-group-item stat-item">
+                        <span class="stat-label">دانلود ماه:</span>
+                        <span class="stat-value">{{Monthdownload}}</span>
+                    </li>
+                    <li class="list-group-item stat-item">
+                        <span class="stat-label">آپلود ماه:</span>
+                        <span class="stat-value">{{Monthupload}}</span>
+                    </li>
+                    <li class="list-group-item stat-item">
+                        <span class="stat-label">کل دانلود:</span>
+                        <span class="stat-value">{{Totaldownload}}</span>
+                    </li>
+                    <li class="list-group-item stat-item">
+                        <span class="stat-label">کل آپلود:</span>
+                        <span class="stat-value">{{Totalupload}}</span>
+                    </li>
                 </ul>
-
             </article>
         </div>
-
-
-
     </div>
     <script src="js/axios.js"></script>
-    <script src="js/vue.js"></script>
-    <script src="js/Messege.js"></script>
     <script src="js/app.js"></script>
 </body>
-<html>
+</html>
