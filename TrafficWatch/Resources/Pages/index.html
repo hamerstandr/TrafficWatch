@@ -130,11 +130,55 @@
         [dir="rtl"] { direction: rtl; }
         [dir="ltr"] { direction: ltr; }
         
+        /* Download Manager Styles */
+        .dm-disabled, .dm-not-found, .dm-loading {
+            text-align: center; padding: 20px; color: var(--text-secondary);
+        }
+        .dm-loading { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .loading-spinner {
+            width: 30px; height: 30px; border: 3px solid rgba(0,0,0,0.1);
+            border-top-color: var(--primary-color); border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .dm-status { }
+        .dm-header {
+            display: flex; align-items: center; gap: 10px;
+            padding-bottom: 15px; margin-bottom: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .dm-status-dot {
+            width: 12px; height: 12px; border-radius: 50%;
+        }
+        .dm-connected { background: var(--success-color); box-shadow: 0 0 10px var(--success-color); }
+        .dm-disconnected { background: var(--danger-color); }
+        .dm-stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px; margin-bottom: 15px;
+        }
+        .dm-stat {
+            background: rgba(247, 248, 250, 0.8); border-radius: 8px;
+            padding: 12px; text-align: center;
+        }
+        .dm-stat-label { font-size: 0.8em; color: var(--text-secondary); margin-bottom: 5px; }
+        .dm-stat-value { font-size: 1.1em; font-weight: 700; color: var(--primary-color); }
+        .dm-features {
+            display: flex; justify-content: space-around; padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        .dm-feature-item {
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+            font-size: 0.75em; color: var(--text-secondary);
+        }
+        .dm-feature-item span { font-size: 1.3em; }
+        
         @media (max-width: 480px) {
             .header-title { font-size: 1.5em; }
             .speed-display { grid-template-columns: 1fr; }
             .stat-grid { grid-template-columns: 1fr; }
             .btn-group { flex-direction: column; }
+            .dm-stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .dm-features { flex-wrap: wrap; gap: 10px; }
+            .dm-feature-item { min-width: 60px; }
         }
         @media print { .refresh-btn, .install-prompt { display: none; } }
     </style>
@@ -214,6 +258,79 @@
                         <div class="stat-item">
                             <div class="stat-label">💾 {{ labels.totalUpload }}</div>
                             <div class="stat-value">{{ Totalupload }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Download Manager Section -->
+            <div class="card" v-if="showDownloadManagerSection">
+                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>⬇️ {{ titles.downloadManager }}</span>
+                    <button @click="toggleDownloadManager" class="btn" style="padding: 5px 10px; font-size: 0.8em; background: rgba(255,255,255,0.2);">
+                        {{ downloadManagerEnabled ? '🔌' : '🔌' }} {{ downloadManagerEnabled ? labels.connected : labels.disconnected }}
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div v-if="!downloadManagerEnabled" class="dm-disabled">
+                        <p>{{ titles.downloadManagerNotEnabled }}</p>
+                        <button @click="toggleDownloadManager" class="btn btn-primary" style="margin-top: 10px;">
+                            {{ buttons.enableDownloadManager }}
+                        </button>
+                    </div>
+                    <div v-else-if="downloadManagerLoading" class="dm-loading">
+                        <div class="loading-spinner"></div>
+                        <p>در حال بارگذاری...</p>
+                    </div>
+                    <div v-else-if="!downloadManager" class="dm-not-found">
+                        <p>❌ {{ titles.noDownloadManager }}</p>
+                        <p style="font-size: 0.85em; color: var(--text-secondary); margin-top: 5px;">
+                            مطمئن شوید DownloadMenger2 در حال اجرا است
+                        </p>
+                    </div>
+                    <div v-else class="dm-status">
+                        <div class="dm-header">
+                            <span class="dm-status-dot" :class="dmStatusClass"></span>
+                            <span>{{ downloadManager.isRunning ? statusTexts.running : statusTexts.stopped }}</span>
+                            <span style="margin-right: auto; font-size: 0.9em; opacity: 0.8;">{{ downloadManager.version }}</span>
+                        </div>
+                        
+                        <div class="dm-stats-grid">
+                            <div class="dm-stat">
+                                <div class="dm-stat-label">{{ labels.activeDownloads }}</div>
+                                <div class="dm-stat-value">{{ downloadManager.activeDownloads }}</div>
+                            </div>
+                            <div class="dm-stat">
+                                <div class="dm-stat-label">{{ labels.queuedDownloads }}</div>
+                                <div class="dm-stat-value">{{ downloadManager.queuedDownloads }}</div>
+                            </div>
+                            <div class="dm-stat">
+                                <div class="dm-stat-label">{{ labels.completedDownloads }}</div>
+                                <div class="dm-stat-value">{{ downloadManager.completedDownloads }}</div>
+                            </div>
+                            <div class="dm-stat">
+                                <div class="dm-stat-label">{{ labels.downloadSpeed }}</div>
+                                <div class="dm-stat-value">{{ formatBytes(downloadManager.totalDownloadSpeed) }}</div>
+                            </div>
+                            <div class="dm-stat">
+                                <div class="dm-stat-label">{{ labels.uploadSpeed }}</div>
+                                <div class="dm-stat-value">{{ formatBytes(downloadManager.totalUploadedSpeed) }}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dm-features" v-if="downloadManager.features || true">
+                            <div class="dm-feature-item" :title="labels.scheduler">
+                                <span>{{ downloadManager.schedulerEnabled ? '✅' : '❌' }}</span>
+                                <small>{{ labels.scheduler }}</small>
+                            </div>
+                            <div class="dm-feature-item" :title="labels.clipboardMonitor">
+                                <span>{{ downloadManager.clipboardMonitorEnabled ? '✅' : '❌' }}</span>
+                                <small>{{ labels.clipboardMonitor }}</small>
+                            </div>
+                            <div class="dm-feature-item" :title="labels.browserIntegration">
+                                <span>{{ downloadManager.browserIntegrationEnabled ? '✅' : '❌' }}</span>
+                                <small>{{ labels.browserIntegration }}</small>
+                            </div>
                         </div>
                     </div>
                 </div>
