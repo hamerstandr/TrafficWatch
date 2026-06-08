@@ -1,4 +1,6 @@
 ﻿using TrafficWatch.Services;
+using TrafficWatch.Services.Dashboard;
+using TrafficWatch.Models.Dashboard;
 using System;
 using System.Net.NetworkInformation;
 using System.Windows;
@@ -13,14 +15,114 @@ namespace TrafficWatch
     /// </summary>
     public partial class WindowSetting : Window
     {
+        private readonly DashboardAddonService _addonService;
+        
         public WindowSetting()
         {
             InitializeComponent();
+            _addonService = DashboardAddonService.Instance;
             Init();
             Network();
+            LoadAddonsList();
             App.Pin(this);
             //CmbInterface
         }
+        
+        /// <summary>
+        /// بارگذاری لیست افزونه‌ها در تب Addons
+        /// </summary>
+        private void LoadAddonsList()
+        {
+            AddonsListPanel.Children.Clear();
+            
+            var addons = _addonService.GetAllAddons();
+            
+            foreach (var addon in addons)
+            {
+                var addonControl = CreateAddonControl(addon);
+                AddonsListPanel.Children.Add(addonControl);
+            }
+        }
+        
+        /// <summary>
+        /// ایجاد کنترل UI برای یک افزونه
+        /// </summary>
+        private Border CreateAddonControl(AddonInfo addon)
+        {
+            var border = new Border
+            {
+                BorderBrush = (Brush)FindResource("WindowForeground"),
+                BorderThickness = new Thickness(1),
+                CornerRadius = new CornerRadius(5),
+                Margin = new Thickness(0, 0, 0, 10),
+                Padding = new Thickness(10)
+            };
+            
+            var grid = new Grid();
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            
+            // اطلاعات افزونه
+            var infoStack = new StackPanel();
+            infoStack.Children.Add(new TextBlock
+            {
+                Text = addon.Name,
+                FontWeight = FontWeights.Bold,
+                FontSize = 14,
+                Foreground = (Brush)FindResource("WindowForeground")
+            });
+            
+            infoStack.Children.Add(new TextBlock
+            {
+                Text = addon.Description,
+                FontSize = 12,
+                Foreground = Brushes.Gray,
+                TextWrapping = TextWrapping.Wrap,
+                Margin = new Thickness(0, 5, 0, 5)
+            });
+            
+            var statusText = addon.IsInstalled ? "Installed" : "Not Installed";
+            var statusColor = addon.IsInstalled ? Brushes.Green : Brushes.Red;
+            
+            infoStack.Children.Add(new TextBlock
+            {
+                Text = $"Status: {statusText} | Version: {addon.Version}",
+                FontSize = 11,
+                Foreground = statusColor
+            });
+            
+            Grid.SetColumn(infoStack, 0);
+            
+            // دکمه فعال/غیرفعال
+            var toggleButton = new CheckBox
+            {
+                Content = "Enabled",
+                IsChecked = addon.IsEnabled && addon.IsInstalled,
+                IsEnabled = addon.IsInstalled,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(10, 0, 0, 0)
+            };
+            
+            toggleButton.Checked += (s, e) =>
+            {
+                _addonService.SetAddonEnabled(addon.Id, true);
+            };
+            
+            toggleButton.Unchecked += (s, e) =>
+            {
+                _addonService.SetAddonEnabled(addon.Id, false);
+            };
+            
+            Grid.SetColumn(toggleButton, 1);
+            
+            grid.Children.Add(infoStack);
+            grid.Children.Add(toggleButton);
+            
+            border.Child = grid;
+            
+            return border;
+        }
+        
         void Network()
         {
             var nicArr = NetworkInterface.GetAllNetworkInterfaces();

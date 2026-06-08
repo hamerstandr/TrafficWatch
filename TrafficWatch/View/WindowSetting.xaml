@@ -332,17 +332,45 @@
                 </Viewbox>
             </Button>
         </StackPanel>
-        <ComboBox   x:Name="CmbInterface" HorizontalAlignment="Left" Margin="87,53,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CmbInterface_SelectionChanged" >
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Label Content="Interface:" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Foreground="{DynamicResource WindowForeground}"/>
-        <Label Content="All Traffic Send" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Foreground="{DynamicResource WindowForeground}"/>
-        <Label x:Name="lblBytesSent" Content="0" HorizontalAlignment="Left" Margin="122,84,0,0" VerticalAlignment="Top" Foreground="{DynamicResource WindowForeground}"/>
-        <Label Content="All Traffic Received" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Foreground="{DynamicResource WindowForeground}"/>
-        <Label x:Name="lblBytesReceived" Content="0" HorizontalAlignment="Left" Margin="122,110,0,0" VerticalAlignment="Top" Foreground="{DynamicResource WindowForeground}"/>
+        
+        <!-- TabControl برای تنظیمات -->
+        <TabControl Margin="10,35,10,10">
+            <TabItem Header="Network">
+                <Grid>
+                    <ComboBox   x:Name="CmbInterface" HorizontalAlignment="Left" Margin="100,20,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="CmbInterface_SelectionChanged" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Label Content="Interface:" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Foreground="{DynamicResource WindowForeground}"/>
+                    <Label Content="All Traffic Send" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Foreground="{DynamicResource WindowForeground}"/>
+                    <Label x:Name="lblBytesSent" Content="0" HorizontalAlignment="Left" Margin="140,50,0,0" VerticalAlignment="Top" Foreground="{DynamicResource WindowForeground}"/>
+                    <Label Content="All Traffic Received" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Foreground="{DynamicResource WindowForeground}"/>
+                    <Label x:Name="lblBytesReceived" Content="0" HorizontalAlignment="Left" Margin="140,75,0,0" VerticalAlignment="Top" Foreground="{DynamicResource WindowForeground}"/>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Addons">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="0" Text="Dashboard Addons Management" 
+                               FontSize="16" FontWeight="Bold" 
+                               Foreground="{DynamicResource WindowForeground}"
+                               Margin="0,0,0,10"/>
+                    
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="AddonsListPanel">
+                            <!-- لیست افزونه‌ها به صورت داینامیک پر می‌شود -->
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

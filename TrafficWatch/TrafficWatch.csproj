@@ -129,6 +129,50 @@
     <Compile Include="View\WindowSetting.xaml.cs">
       <DependentUpon>WindowSetting.xaml</DependentUpon>
     </Compile>
+    <!-- Dashboard Addon Views -->
+    <Compile Include="View\Dashboard\DashboardView.xaml.cs">
+      <DependentUpon>DashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dashboard\DownloadManagerTab.xaml.cs">
+      <DependentUpon>DownloadManagerTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dashboard\MusicPlayerTab.xaml.cs">
+      <DependentUpon>MusicPlayerTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dashboard\SystemMonitorTab.xaml.cs">
+      <DependentUpon>SystemMonitorTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dashboard\GenericAddonTab.xaml.cs">
+      <DependentUpon>GenericAddonTab.xaml</DependentUpon>
+    </Compile>
+    <!-- Dashboard Models -->
+    <Compile Include="Models\Dashboard\AddonInfo.cs" />
+    <Compile Include="Models\DownloadManagerInfo.cs" />
+    <!-- Dashboard Services -->
+    <Compile Include="Services\Dashboard\DashboardAddonService.cs" />
+    <Compile Include="Services\DownloadManagerService.cs" />
+    <Page Include="View\Dashboard\DashboardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dashboard\DownloadManagerTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dashboard\MusicPlayerTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dashboard\SystemMonitorTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dashboard\GenericAddonTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Include="Control\ChartTraffic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
