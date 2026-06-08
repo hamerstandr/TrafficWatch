@@ -1,121 +1,45 @@
 ```
 # Build artifacts
-*.o
 *.obj
 *.exe
 *.dll
-*.so
-*.a
-*.out
+*.pdb
+*.userprefs
+*.cache
+*.manifest
+*.log
 
 # Dependencies
 packages/
-lib/
 bin/
 obj/
 
-# Logs and temp files
+# Logs
 *.log
-*.tmp
-*.swp
 
-# Environment
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Environment specific settings
 .env
 .env.local
 *.env.*
 
-# Editors
-.vscode/
-.idea/
-
 # OS generated files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
 
-# Coverage reports
-coverage/
-htmlcov/
-.coverage
+# Visual Studio Code
+.vscode/
 
-# Python specific
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.log
-.git/
-
-# Node.js specific
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-node_modules/
-dist/
-build/
-.nyc_output
-coverage/
-*.lcov
-.next/
-.nuxt/
-public/dist
-.svelte-kit/
-.cargo/
-
-# Java specific
-target/
-.gradle/
-build/
-!gradle/
-gradle/
-*.class
-*.jar
-*.war
-*.ear
-*.zip
-!*.java
-.settings/
-bin/
-gen/
-out/
-*.iml
-*.ipr
-*.iws
-.classpath
-.project
-
-# C# specific
-bin/
-obj/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-packages/
-[._]*.user
-[._]ReSharper*
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
 *.DotSettings.user
-.vs/
-.DS_Store
-Thumbs.db
-
-# Web specific
-*.min.js
-*.min.css
-public/build/
-dist/
-build/
-*.map
 ```
