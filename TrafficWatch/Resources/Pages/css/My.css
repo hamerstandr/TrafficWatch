@@ -39,3 +39,32 @@
     border-radius: .5em;
     font-family: IRANSans, sans-serif;
 }
+
+/* PWA specific styles */
+@media (display-mode: standalone) {
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .btn {
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    .stat-item {
+        min-height: 60px;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --card-bg: rgba(30, 30, 46, 0.95);
+        --text-primary: #f5f6fa;
+        --text-secondary: #a4b0be;
+    }
+}

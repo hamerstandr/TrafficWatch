@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Media;
 
-namespace EarTrumpet.Services
+namespace TrafficWatch.Services
 {
     public static class AccentColorService
     {

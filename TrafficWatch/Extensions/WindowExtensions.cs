@@ -1,5 +1,4 @@
-﻿using EarTrumpet.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,18 +26,18 @@ namespace TrafficWatch.Extensions
                     FillBehavior = FillBehavior.Stop,
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseIn }
                 };
-                var taskbarPosition = TaskbarService.GetWinTaskbarState().TaskbarPosition;
+                var taskbarPosition = Services.TaskbarService.GetWinTaskbarState().TaskbarPosition;
                 switch (taskbarPosition)
                 {
-                    case TaskbarPosition.Left:
-                    case TaskbarPosition.Right:
+                    case Services.TaskbarPosition.Left:
+                    case Services.TaskbarPosition.Right:
                         hideAnimation.From = window.Left;
                         break;
                     default:
                         hideAnimation.From = window.Top;
                         break;
                 }
-                hideAnimation.To = (taskbarPosition == TaskbarPosition.Top || taskbarPosition == TaskbarPosition.Left) ? hideAnimation.From - 10 : hideAnimation.From + 10;
+                hideAnimation.To = (taskbarPosition == Services.TaskbarPosition.Top || taskbarPosition == Services.TaskbarPosition.Left) ? hideAnimation.From - 10 : hideAnimation.From + 10;
                 hideAnimation.Completed += (s, e) =>
                 {
                     window.Visibility = Visibility.Hidden;
@@ -47,8 +46,8 @@ namespace TrafficWatch.Extensions
 
                 switch (taskbarPosition)
                 {
-                    case TaskbarPosition.Left:
-                    case TaskbarPosition.Right:
+                    case Services.TaskbarPosition.Left:
+                    case Services.TaskbarPosition.Right:
                         window.ApplyAnimationClock(Window.LeftProperty, hideAnimation.CreateClock());
                         break;
                     default:
@@ -79,18 +78,18 @@ namespace TrafficWatch.Extensions
                     FillBehavior = FillBehavior.Stop,
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                 };
-                var taskbarPosition = TaskbarService.GetWinTaskbarState().TaskbarPosition;
+                var taskbarPosition = Services.TaskbarService.GetWinTaskbarState().TaskbarPosition;
                 switch (taskbarPosition)
                 {
-                    case TaskbarPosition.Left:
-                    case TaskbarPosition.Right:
+                    case Services.TaskbarPosition.Left:
+                    case Services.TaskbarPosition.Right:
                         showAnimation.To = window.Left;
                         break;
                     default:
                         showAnimation.To = window.Top;
                         break;
                 }
-                showAnimation.From = (taskbarPosition == TaskbarPosition.Top || taskbarPosition == TaskbarPosition.Left) ? showAnimation.To - 25 : showAnimation.To + 25;
+                showAnimation.From = (taskbarPosition == Services.TaskbarPosition.Top || taskbarPosition == Services.TaskbarPosition.Left) ? showAnimation.To - 25 : showAnimation.To + 25;
                 showAnimation.Completed += (s, e) =>
                 {
                     window.Topmost = true;
@@ -99,8 +98,8 @@ namespace TrafficWatch.Extensions
                 };
                 switch (taskbarPosition)
                 {
-                    case TaskbarPosition.Left:
-                    case TaskbarPosition.Right:
+                    case Services.TaskbarPosition.Left:
+                    case Services.TaskbarPosition.Right:
                         window.ApplyAnimationClock(Window.LeftProperty, showAnimation.CreateClock());
                         break;
                     default:

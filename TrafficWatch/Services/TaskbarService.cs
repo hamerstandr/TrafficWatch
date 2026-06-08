@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace EarTrumpet.Services
+namespace TrafficWatch.Services
 {
     public sealed class TaskbarService
     {

@@ -1,0 +1,58 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
+    <!-- General -->
+    <sys:String x:Key="AppTitle">TrafficWatch - مانیتور ترافیک شبکه</sys:String>
+    <sys:String x:Key="Settings">تنظیمات</sys:String>
+    <sys:String x:Key="Exit">خروج</sys:String>
+    <sys:String x:Key="Show">نمایش</sys:String>
+    <sys:String x:Key="Hide">مخفی کردن</sys:String>
+    <sys:String x:Key="About">درباره</sys:String>
+    
+    <!-- Network -->
+    <sys:String x:Key="Interface">رابط شبکه</sys:String>
+    <sys:String x:Key="InterfaceType">نوع رابط</sys:String>
+    <sys:String x:Key="IPAddress">آدرس IP</sys:String>
+    <sys:String x:Key="Download">دانلود</sys:String>
+    <sys:String x:Key="Upload">آپلود</sys:String>
+    <sys:String x:Key="Speed">سرعت</sys:String>
+    <sys:String x:Key="SpeedDownload">سرعت دانلود</sys:String>
+    <sys:String x:Key="SpeedUpload">سرعت آپلود</sys:String>
+    <sys:String x:Key="AllTrafficSend">کل ترافیک ارسالی</sys:String>
+    <sys:String x:Key="AllTrafficReceived">کل ترافیک دریافتی</sys:String>
+    
+    <!-- Statistics -->
+    <sys:String x:Key="MaxSpeed">حداکثر سرعت</sys:String>
+    <sys:String x:Key="TodayDownload">دانلود امروز</sys:String>
+    <sys:String x:Key="TodayUpload">آپلود امروز</sys:String>
+    <sys:String x:Key="MonthDownload">دانلود ماه</sys:String>
+    <sys:String x:Key="MonthUpload">آپلود ماه</sys:String>
+    <sys:String x:Key="TotalDownload">کل دانلود</sys:String>
+    <sys:String x:Key="TotalUpload">کل آپلود</sys:String>
+    
+    <!-- Settings Panel -->
+    <sys:String x:Key="Language">زبان</sys:String>
+    <sys:String x:Key="StartupOnBoot">اجرا هنگام راه‌اندازی ویندوز</sys:String>
+    <sys:String x:Key="Transparency">شفافیت پنجره</sys:String>
+    <sys:String x:Key="AutoUpdate">بروزرسانی خودکار</sys:String>
+    <sys:String x:Key="ShowTrayIcon">نمایش آیکون در سیستم تری</sys:String>
+    <sys:String x:Key="WebServerEnabled">فعال‌سازی سرور وب</sys:String>
+    <sys:String x:Key="HttpPort">پورت سرور وب</sys:String>
+    <sys:String x:Key="EdgeHide">مخفی شدن لبه‌ای</sys:String>
+    <sys:String x:Key="Theme">تم</sys:String>
+    <sys:String x:Key="Dark">تیره</sys:String>
+    <sys:String x:Key="Light">روشن</sys:String>
+    <sys:String x:Key="System">سیستم</sys:String>
+    
+    <!-- Web Dashboard -->
+    <sys:String x:Key="WebDashboard">داشبورد وب</sys:String>
+    <sys:String x:Key="OpenInBrowser">باز کردن در مرورگر</sys:String>
+    <sys:String x:Key="RealTimeMonitoring">مانیتورینگ لحظه‌ای</sys:String>
+    
+    <!-- Messages -->
+    <sys:String x:Key="WinPcapNotFound">WinPcap یافت نشد. لطفاً آن را نصب کنید.</sys:String>
+    <sys:String x:Key="RestartRequired">برای اعمال تغییرات نیاز به راه‌اندازی مجدد است.</sys:String>
+    <sys:String x:Key="SettingsSaved">تنظیمات ذخیره شد.</sys:String>
+    
+</ResourceDictionary>

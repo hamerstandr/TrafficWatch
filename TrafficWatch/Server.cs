@@ -1,4 +1,4 @@
-﻿using HttpServer.Models;
+using HttpServer.Models;
 using HttpServer.RouteHandlers;
 using System;
 using System.Collections.Generic;
@@ -14,11 +14,18 @@ namespace TrafficWatch
         private Thread thread;
         readonly TrafficWatch.View.Detail.ModelHistory History = new TrafficWatch.View.Detail.ModelHistory();
         readonly HttpServer.HttpServer httpServer;
+        
         public Server()
         {
+            // Check if web server is enabled in settings
+            if (!TrafficWatch.Properties.Settings.Default.WebServerEnabled)
+            {
+                return; // Web server is disabled, skip initialization
+            }
+
             log4net.Config.XmlConfigurator.Configure();
             var assembly = Assembly.GetExecutingAssembly();
-            Path =System.IO.Path.GetDirectoryName( assembly.Location);
+            Path = System.IO.Path.GetDirectoryName(assembly.Location);
             History.Initialize();
             var route_config = new List<Route>() {
                 new Route {
@@ -34,14 +41,7 @@ namespace TrafficWatch
                         };
                      }
                 }
-                //,new Route()
-                //    {
-                //        Callable = new FileSystemRouteHandler() { BasePath = @"C:\Documents\GitHub\to-do-notifications"}.Handle,
-                //        UrlRegex = "^\\/Static\\/(.*)$",
-                //        Method = "GET"
-                //    }
-                ,
-                new Route()
+                ,new Route()
                     {
                         Callable = new FileSystemRouteHandler() { BasePath =Path+ @"\Resources\Pages\"}.Handle,
                         UrlRegex = "^\\/state\\/(.*)$",
@@ -167,31 +167,31 @@ namespace TrafficWatch
                 }
             };
 
-           httpServer = new HttpServer.HttpServer(8080, route_config);
+           httpServer = new HttpServer.HttpServer(TrafficWatch.Properties.Settings.Default.HttpPort, route_config);
 
             Thread = new Thread(new ThreadStart(httpServer.Listen));
             //Thread.Start();
         }
         public void Start()
         {
-            Thread.Start();
+            Thread?.Start();
         }
 
         [Obsolete]
         public void Suspend()
         {
-            Thread.Suspend();
+            Thread?.Suspend();
         }
         public void Abort()
         {
-            httpServer.Stop();
-            Thread.Abort();
+            httpServer?.Stop();
+            Thread?.Abort();
         }
 
         [Obsolete]
         public void Resume()
         {
-            Thread.Resume();
+            Thread?.Resume();
         }
         public Thread Thread { get => thread; set => thread = value; }
 
