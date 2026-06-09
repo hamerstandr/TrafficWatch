@@ -1,0 +1,8 @@
+C:\Users\hamed-lab\Documents\GitHub\TrafficWatch\ServerTrafice\obj\Debug\net10.0-windows\ServerTrafice.csproj.AssemblyReference.cache
+C:\Users\hamed-lab\Documents\GitHub\TrafficWatch\ServerTrafice\obj\Debug\net10.0-windows\ServerTrafice.ProjectInstaller.resources
+C:\Users\hamed-lab\Documents\GitHub\TrafficWatch\ServerTrafice\obj\Debug\net10.0-windows\ServerTrafice.csproj.GenerateResource.cache
+C:\Users\hamed-lab\Documents\GitHub\TrafficWatch\ServerTrafice\obj\Debug\net10.0-windows\ServerTrafice.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hamed-lab\Documents\GitHub\TrafficWatch\ServerTrafice\obj\Debug\net10.0-windows\ServerTrafice.AssemblyInfoInputs.cache
+C:\Users\hamed-lab\Documents\GitHub\TrafficWatch\ServerTrafice\obj\Debug\net10.0-windows\ServerTrafice.AssemblyInfo.cs
+C:\Users\hamed-lab\Documents\GitHub\TrafficWatch\ServerTrafice\obj\Debug\net10.0-windows\ServerTrafice.csproj.CoreCompileInputs.cache
+C:\Users\hamed-lab\Documents\GitHub\TrafficWatch\ServerTrafice\obj\Debug\net10.0-windows\ServerTrafice.sourcelink.json
