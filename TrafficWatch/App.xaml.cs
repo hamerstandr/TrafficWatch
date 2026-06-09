@@ -9,6 +9,8 @@ using System.Windows;
 using TrafficWatch.Extensions;
 using TrafficWatch.Properties;
 using TrafficWatch.Services.Detail;
+using TrafficWatch.Services.Dashboard;
+using TrafficWatch.Services.PluginSystem;
 using WindowsDesktop;
 
 namespace TrafficWatch
@@ -40,6 +42,8 @@ namespace TrafficWatch
         public static History _History ;
         private readonly System.Timers.Timer timer;
         private View.WelcomeWindow welcomeWindow;
+        private NamedPipePluginServer _pluginServer;
+        
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             //MessageBox.Show("App");
@@ -57,6 +61,14 @@ namespace TrafficWatch
             if(TrafficWatch.Properties.Settings.Default.Startup)
                 Program.SetStartup();
             Init();
+            
+            // Initialize Dashboard Addon Service
+            DashboardAddonService.Instance.Initialize();
+            
+            // Start Named Pipe Plugin Server for Windows Service communication
+            _pluginServer = new NamedPipePluginServer();
+            _pluginServer.Start();
+            
             _Server = new Server();
             if (Properties.Settings.Default.WebServerEnabled)
             {

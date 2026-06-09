@@ -178,7 +178,7 @@ namespace TrafficWatch.Services.Dashboard
         /// <summary>
         /// ذخیره افزونه‌ها در فایل تنظیمات
         /// </summary>
-        private void SaveAddons()
+        public void SaveAddons()
         {
             try
             {
