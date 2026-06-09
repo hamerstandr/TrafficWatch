@@ -1,45 +1,56 @@
 ```
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+packages/
+
 # Build artifacts
-*.obj
+obj/
+bin/
+Debug/
+Release/
 *.exe
 *.dll
 *.pdb
 *.userprefs
-*.cache
-*.manifest
+
+# Logs and temp files
 *.log
+*.tmp
+*.swp
 
-# Dependencies
-packages/
-bin/
-obj/
-
-# Logs
-*.log
-
-# User-specific files
-*.user
-*.userosscache
-*.suo
-*.userprefs
-
-# Environment specific settings
+# Environment
 .env
 .env.local
 *.env.*
 
-# OS generated files
+# Editors
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS
 .DS_Store
 Thumbs.db
-ehthumbs.db
-Icon?
-desktop.ini
 
-# Visual Studio Code
-.vscode/
+# Testing
+TestResults/
+coverage/
+htmlcov/
+.coverage
 
-# Resharper
-_ReSharper*/
-*.[Rr]e[Ss]harper
-*.DotSettings.user
+# Other common ignores
+*.out
+*.a
+*.so
+dist/
+target/
+.gradle/
 ```

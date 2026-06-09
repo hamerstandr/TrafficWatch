@@ -18,7 +18,16 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="WebServerEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SecurityEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SecurityToken" Type="System.String" Scope="User">
+      <Value Profile="(Default)"></Value>
+    </Setting>
+    <Setting Name="AllowedIPs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1,192.168.</Value>
     </Setting>
     <Setting Name="Language" Type="System.String" Scope="User">
       <Value Profile="(Default)">fa</Value>

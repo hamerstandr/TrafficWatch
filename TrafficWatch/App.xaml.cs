@@ -58,9 +58,12 @@ namespace TrafficWatch
                 Program.SetStartup();
             Init();
             _Server = new Server();
-            _Server.Start();
+            if (Properties.Settings.Default.WebServerEnabled)
+            {
+                _Server.Start();
+            }
         }
-        Server _Server;
+        public static Server _Server;
         #region Show Trafick
         void Init()
         {
