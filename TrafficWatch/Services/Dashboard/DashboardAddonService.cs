@@ -316,6 +316,19 @@ namespace TrafficWatch.Services.Dashboard
         public event EventHandler<AddonStateChangedEventArgs> OnAddonStateChanged;
 
         /// <summary>
+        /// رویداد دریافت داده استریم از افزونه‌ها (مانند موسیقی در حال پخش)
+        /// </summary>
+        public event EventHandler<AddonDataReceivedEventArgs> OnDataReceived;
+
+        /// <summary>
+        /// متد فراخوانی رویداد دریافت داده از افزونه‌ها
+        /// </summary>
+        public void OnDataReceived(string addonId, string data)
+        {
+            OnDataReceived?.Invoke(this, new AddonDataReceivedEventArgs(addonId, data));
+        }
+
+        /// <summary>
         /// دریافت آدرس API یک افزونه
         /// </summary>
         public string GetAddonApiEndpoint(string addonId)
@@ -346,6 +359,21 @@ namespace TrafficWatch.Services.Dashboard
         public AddonStateChangedEventArgs(AddonInfo addon)
         {
             Addon = addon;
+        }
+    }
+
+    /// <summary>
+    /// آرگومان‌های رویداد دریافت داده از افزونه‌ها (استریم)
+    /// </summary>
+    public class AddonDataReceivedEventArgs : EventArgs
+    {
+        public string AddonId { get; }
+        public string Data { get; }
+
+        public AddonDataReceivedEventArgs(string addonId, string data)
+        {
+            AddonId = addonId;
+            Data = data;
         }
     }
 }
