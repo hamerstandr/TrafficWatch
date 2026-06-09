@@ -1,275 +1,39 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{499A505B-CDF3-4220-9914-F09F3097454F}</ProjectGuid>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <RootNamespace>TrafficWatch</RootNamespace>
     <AssemblyName>TrafficWatch</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>Bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>Tray.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
-    </Reference>
-    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=3.3.0.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a">
-      <HintPath>..\packages\log4net.3.3.0\lib\net462\log4net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PacketDotNet, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PacketDotNet.0.16.0\lib\PacketDotNet.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpPcap, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpPcap.4.5.0\lib\netstandard2.0\SharpPcap.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="log4net" Version="3.3.0" />
+    <PackageReference Include="PacketDotNet" Version="0.16.0" />
+    <PackageReference Include="SharpPcap" Version="4.5.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="BlurWindowExtensions.cs" />
-    <Compile Include="Control\DataChart.cs" />
-    <Compile Include="Control\ChartTraffic.xaml.cs">
-      <DependentUpon>ChartTraffic.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\ItemMaxDownload.cs" />
-    <Compile Include="Control\RelayCommand.cs" />
-    <Compile Include="Control\TrayIcon.cs" />
-    <Compile Include="Control\Zooming.cs" />
-    <Compile Include="Extensions\VersionHelper.cs" />
-    <Compile Include="Extensions\WindowExtensions.cs" />
-    <Compile Include="Server.cs" />
-    <Compile Include="Services\Detail\CaptureManager.cs" />
-    <Compile Include="Services\Detail\DelayRunManager.cs" />
-    <Compile Include="Services\Detail\NetworkStructure.cs" />
-    <Compile Include="Services\Detail\PortProcessMap.cs" />
-    <Compile Include="Services\Detail\TcpProcessRecord.cs" />
-    <Compile Include="Services\Detail\Tool.cs" />
-    <Compile Include="Services\Detail\UDMap.cs" />
-    <Compile Include="Services\Detail\WinAPIWrapper.cs" />
-    <Compile Include="View\Detail\DetailWindow.xaml.cs">
-      <DependentUpon>DetailWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Detail\historyWindow.xaml.cs">
-      <DependentUpon>historyWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Detail\ModelHistory.cs" />
-    <Compile Include="View\Detail\ProcessDetailWindow.xaml.cs">
-      <DependentUpon>ProcessDetailWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Detail\ProcessView.cs" />
-    <Compile Include="View\History.cs" />
-    <Compile Include="View\Monitor\MonitorProcess.xaml.cs">
-      <DependentUpon>MonitorProcess.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\PopWindow.xaml.cs">
-      <DependentUpon>PopWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Services\AccentColorService.cs" />
-    <Compile Include="Services\TaskbarService.cs" />
-    <Compile Include="Services\ThemeService.cs" />
-    <Compile Include="Services\UserPreferencesService.cs" />
-    <Compile Include="Services\UserSystemPreferencesService.cs" />
-    <Compile Include="View\Toster.xaml.cs">
-      <DependentUpon>Toster.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\WelcomeWindow.xaml.cs">
-      <DependentUpon>WelcomeWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\WindowSetting.xaml.cs">
-      <DependentUpon>WindowSetting.xaml</DependentUpon>
-    </Compile>
-    <!-- Dashboard Addon Views -->
-    <Compile Include="View\Dashboard\DashboardView.xaml.cs">
-      <DependentUpon>DashboardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Dashboard\DownloadManagerTab.xaml.cs">
-      <DependentUpon>DownloadManagerTab.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Dashboard\MusicPlayerTab.xaml.cs">
-      <DependentUpon>MusicPlayerTab.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Dashboard\SystemMonitorTab.xaml.cs">
-      <DependentUpon>SystemMonitorTab.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Dashboard\GenericAddonTab.xaml.cs">
-      <DependentUpon>GenericAddonTab.xaml</DependentUpon>
-    </Compile>
-    <!-- Dashboard Models -->
-    <Compile Include="Models\Dashboard\AddonInfo.cs" />
-    <Compile Include="Models\DownloadManagerInfo.cs" />
-    <!-- Dashboard Services -->
-    <Compile Include="Services\Dashboard\DashboardAddonService.cs" />
-    <Compile Include="Services\DownloadManagerService.cs" />
-    <Page Include="View\Dashboard\DashboardView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Dashboard\DownloadManagerTab.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Dashboard\MusicPlayerTab.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Dashboard\SystemMonitorTab.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Dashboard\GenericAddonTab.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <ProjectReference Include="..\HttpServer\HttpServer.csproj" />
+    <ProjectReference Include="..\VirtualDesktop.WPF\VirtualDesktop.WPF.csproj" />
+    <ProjectReference Include="..\VirtualDesktop\VirtualDesktop.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Page Include="Control\ChartTraffic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\MenuThame.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\SystemThemeColors.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="View\Detail\DetailWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Detail\historyWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Detail\ProcessDetailWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Monitor\MonitorProcess.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\PopWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Toster.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\WelcomeWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\WindowSetting.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="app.manifest" />
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
+
   <ItemGroup>
     <Resource Include="Tray.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+
   <ItemGroup>
     <None Include="Resources\Pages\css\bulma.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Pages\fonts\glyphicons-halflings-regular.eot">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -285,66 +49,32 @@
     <None Include="Resources\Pages\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Pages\js\jquery-3.4.1.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Pages\js\Messege.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Pages\js\vue.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HttpServer\HttpServer.csproj">
-      <Project>{5387c34a-e86a-4a25-8851-c306e3e5534a}</Project>
-      <Name>HttpServer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VirtualDesktop.WPF\VirtualDesktop.WPF.csproj">
-      <Project>{9dd597c6-065a-4764-a96c-1b18c4eded78}</Project>
-      <Name>VirtualDesktop.WPF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VirtualDesktop\VirtualDesktop.csproj">
-      <Project>{ab848ecd-76aa-41c0-b63d-86a8591b25aa}</Project>
-      <Name>VirtualDesktop</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Pages\js\app.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Pages\js\axios.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Pages\css\bootstrap.min.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Pages\css\My.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Pages\Image\favicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Pages\fonts\glyphicons-halflings-regular.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>taskkill /f /fi "IMAGENAME eq TrafficWatch.exe"</PreBuildEvent>
-  </PropertyGroup>
 </Project>

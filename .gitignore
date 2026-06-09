@@ -1,45 +1,73 @@
 ```
-# Build artifacts
-*.obj
-*.exe
-*.dll
-*.pdb
-*.userprefs
-*.cache
-*.manifest
-*.log
-
-# Dependencies
-packages/
-bin/
-obj/
-
-# Logs
-*.log
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Dd]epends/
+intermediate/
+[Bb]in/
+[Oo]bj/
 
 # User-specific files
 *.user
 *.userosscache
 *.suo
 *.userprefs
+*.sln.docstates
 
-# Environment specific settings
-.env
-.env.local
-*.env.*
+# Build results of Visual Studio Test projects
+*.trx
 
-# OS generated files
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Icon?
-desktop.ini
+# Visual Studio cache/options directory
+.vs/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+
+# Coverity
+coverity_output/
+
+# Service Fabric
+[Ss]fpkgupload/
 
 # Visual Studio Code
 .vscode/
 
-# Resharper
+# ReSharper
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
+
+# NuGet
+packages/
+*.nupkg
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment specific files
+.env
+.env.local
+*.env*
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
 ```
