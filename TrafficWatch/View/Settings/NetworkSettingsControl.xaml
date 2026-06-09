@@ -1,0 +1,124 @@
+<UserControl x:Class="TrafficWatch.View.Settings.NetworkSettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="500">
+    
+    <UserControl.Resources>
+        <Style x:Key="SettingLabelStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Key="SettingInputStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="0,5,0,10"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#FF888888"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" Text="تنظیمات شبکه داخلی (LAN)" 
+                   FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <!-- Server IP Address -->
+        <TextBlock Grid.Row="1" Style="{StaticResource SettingLabelStyle}"
+                   Text="آدرس IP سرور در شبکه:"/>
+        <TextBox Grid.Row="2" x:Name="txtServerIp" Style="{StaticResource SettingInputStyle}"
+                 ToolTip="مثال: 192.168.1.50 (خالی برای تشخیص خودکار)"/>
+        <TextBlock Grid.Row="2" Foreground="#FF888888" FontSize="11" 
+                   VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                   Text="مثال: 192.168.1.50"/>
+
+        <!-- Server Port -->
+        <TextBlock Grid.Row="3" Style="{StaticResource SettingLabelStyle}"
+                   Text="پورت سرویس:"/>
+        <TextBox Grid.Row="4" x:Name="txtServerPort" Style="{StaticResource SettingInputStyle}"
+                 Text="9090" PreviewTextInput="NumberValidationTextBox"/>
+
+        <!-- API Token -->
+        <TextBlock Grid.Row="5" Style="{StaticResource SettingLabelStyle}"
+                   Text="توکن احراز هویت (API Token):"/>
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="txtApiToken" Style="{StaticResource SettingInputStyle}" 
+                     Margin="0,5,10,10"
+                     ToolTip="توکن امنیتی برای ارتباط با کلاینت‌ها"/>
+            <Button Grid.Column="1" x:Name="btnGenerateToken" Content="تولید خودکار" 
+                    Padding="10,4" Margin="0,5,5,10" Click="BtnGenerateToken_Click"/>
+            <Button Grid.Column="2" x:Name="btnShowHideToken" Content="👁️" 
+                    Padding="8,4" Margin="0,5,0,10" Click="BtnShowHideToken_Click"/>
+        </Grid>
+
+        <!-- Allowed IP Ranges -->
+        <TextBlock Grid.Row="7" Style="{StaticResource SettingLabelStyle}"
+                   Text="محدوده IPهای مجاز (لیست سفید):"/>
+        <TextBox Grid.Row="8" x:Name="txtAllowedIpRanges" Style="{StaticResource SettingInputStyle}"
+                 Height="80" TextWrapping="Wrap" AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Auto"
+                 ToolTip="هر IP را در یک خط وارد کنید. پشتیبانی از CIDR (مثلاً 192.168.1.0/24)"/>
+        <TextBlock Grid.Row="8" Foreground="#FF888888" FontSize="11" 
+                   VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                   Text="هر IP در یک خط - مثال: 192.168.1.0/24"/>
+
+        <!-- Use Secure Connection -->
+        <CheckBox Grid.Row="9" x:Name="chkUseSecureConnection" 
+                  Content="استفاده از اتصال امن (HTTPS/TLS)" 
+                  Margin="0,10,0,10" FontSize="14"/>
+
+        <!-- Rate Limiting -->
+        <TextBlock Grid.Row="10" Style="{StaticResource SettingLabelStyle}"
+                   Text="حداکثر درخواست در دقیقه (Rate Limiting):"/>
+        <TextBox Grid.Row="11" x:Name="txtMaxRequestsPerMinute" Style="{StaticResource SettingInputStyle}"
+                 Text="100" PreviewTextInput="NumberValidationTextBox"/>
+
+        <!-- Enable Security Logging -->
+        <CheckBox Grid.Row="12" x:Name="chkEnableSecurityLogging" 
+                  Content="فعال‌سازی لاگ‌گیری رویدادهای امنیتی" 
+                  Margin="0,10,0,10" FontSize="14" IsChecked="True"/>
+
+        <!-- Connection Timeout -->
+        <TextBlock Grid.Row="13" Style="{StaticResource SettingLabelStyle}"
+                   Text="تایم‌اوت اتصال (میلی‌ثانیه):"/>
+        <TextBox Grid.Row="14" x:Name="txtConnectionTimeout" Style="{StaticResource SettingInputStyle}"
+                 Text="5000" PreviewTextInput="NumberValidationTextBox"/>
+
+        <!-- Security Checklist Button -->
+        <Button Grid.Row="15" x:Name="btnSecurityChecklist" 
+                Content="📋 مشاهده چک‌لیست کامل امنیتی" 
+                Padding="15,8" Margin="0,15,0,10" 
+                HorizontalAlignment="Left"
+                Click="BtnSecurityChecklist_Click"/>
+
+        <!-- Save/Cancel Buttons -->
+        <StackPanel Grid.Row="16" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button x:Name="btnCancel" Content="انصراف" Padding="15,8" Margin="0,0,10,0" 
+                    Click="BtnCancel_Click"/>
+            <Button x:Name="btnSave" Content="ذخیره تنظیمات" Padding="15,8" 
+                    Background="#FF4CAF50" Foreground="White"
+                    Click="BtnSave_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

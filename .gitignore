@@ -1,1 +1,33 @@
-Nothing needs to be added to .gitignore since only a markdown file (NETWORK_INTEGRATION_GUIDE.md) was added, which is a source/config file and not a build artifact, dependency, or temporary file.
+```
+# Build artifacts
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.userprefs
+
+# Dependencies
+packages/
+node_modules/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp
+```

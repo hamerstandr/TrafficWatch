@@ -1,0 +1,12 @@
+<Window x:Class="TrafficWatch.View.Settings.SecurityChecklistWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="چک‌لیست کامل امنیتی - شبکه داخلی" 
+        Height="700" Width="800"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+    
+    <Grid x:Name="MainGrid" Margin="15">
+        <!-- محتوا به صورت داینامیک در code-behind بارگذاری می‌شود -->
+    </Grid>
+</Window>
