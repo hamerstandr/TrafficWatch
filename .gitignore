@@ -1,1 +1,1 @@
-(DO NOT OUTPUT ANYTHING - The modified file 'DASHBOARD_ADDON_DEVELOPMENT_GUIDE.md' is a documentation file and does not require any gitignore rules)
+Nothing needs to be added to .gitignore since only a markdown file (NETWORK_INTEGRATION_GUIDE.md) was added, which is a source/config file and not a build artifact, dependency, or temporary file.
