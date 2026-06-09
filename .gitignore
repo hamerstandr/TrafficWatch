@@ -1,27 +1,23 @@
 ```
-# Dependencies
-node_modules/
-venv/
-.venv/
-__pycache__/
-.mypy_cache/
-.pytest_cache/
-packages/
-
 # Build artifacts
-obj/
 bin/
-Debug/
-Release/
-*.exe
+obj/
 *.dll
+*.exe
 *.pdb
 *.userprefs
-
-# Logs and temp files
+*.cache
 *.log
-*.tmp
-*.swp
+
+# Dependencies
+packages/
+node_modules/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
 
 # Environment
 .env
@@ -29,28 +25,12 @@ Release/
 *.env.*
 
 # Editors
-.vscode/
+.vs/
 .idea/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
+*.swp
+*.swo
 
-# OS
+# OS generated files
 .DS_Store
 Thumbs.db
-
-# Testing
-TestResults/
-coverage/
-htmlcov/
-.coverage
-
-# Other common ignores
-*.out
-*.a
-*.so
-dist/
-target/
-.gradle/
 ```
