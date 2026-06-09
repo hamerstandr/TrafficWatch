@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.ServiceProcess;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TrafficWatch.Models.Dashboard;
@@ -11,6 +12,7 @@ namespace TrafficWatch.Services.Dashboard
     /// <summary>
     /// سرویس مدیریت افزونه‌های داشبورد
     /// این سرویس امکان نصب، حذف، فعال/غیرفعال کردن و تنظیمات افزونه‌ها را فراهم می‌کند
+    /// همچنین افزونه‌ها را از طریق سرویس‌های ویندوز شناسایی می‌کند
     /// </summary>
     public class DashboardAddonService
     {
@@ -50,6 +52,7 @@ namespace TrafficWatch.Services.Dashboard
 
             LoadAddons();
             RegisterDefaultAddons();
+            ScanWindowsServicesForAddons();
             SaveAddons();
             
             _isInitialized = true;
@@ -79,6 +82,71 @@ namespace TrafficWatch.Services.Dashboard
             if (!_addons.Any(a => a.Id == "system-monitor"))
             {
                 _addons.Add(new SystemMonitorAddonInfo());
+            }
+        }
+
+        /// <summary>
+        /// اسکن سرویس‌های ویندوز برای شناسایی افزونه‌ها
+        /// برنامه‌های اجرایی که به عنوان سرویس ویندوز ثبت شده‌اند به عنوان افزونه اضافه می‌شوند
+        /// </summary>
+        private void ScanWindowsServicesForAddons()
+        {
+            try
+            {
+                var services = ServiceController.GetServices();
+                
+                foreach (var service in services)
+                {
+                    // بررسی سرویس‌هایی که ممکن است افزونه باشند
+                    // مثلاً سرویس دانلود منیجر یا پخش کننده موسیقی
+                    string serviceName = service.ServiceName.ToLower();
+                    string displayName = service.DisplayName.ToLower();
+                    
+                    // بررسی برای دانلود منیجر
+                    if ((serviceName.Contains("download") || displayName.Contains("download")) && 
+                        !_addons.Any(a => a.Id == "download-manager"))
+                    {
+                        var dmAddon = _addons.FirstOrDefault(a => a.Id == "download-manager");
+                        if (dmAddon != null)
+                        {
+                            dmAddon.IsInstalled = true;
+                            dmAddon.Settings["ServiceName"] = service.ServiceName;
+                        }
+                    }
+                    
+                    // بررسی برای پخش کننده موسیقی
+                    if ((serviceName.Contains("music") || serviceName.Contains("media") || 
+                         displayName.Contains("music") || displayName.Contains("media")) && 
+                        !_addons.Any(a => a.Id == "music-player-installed"))
+                    {
+                        if (!_addons.Any(a => a.Id == "music-player-installed"))
+                        {
+                            var musicAddon = new AddonInfo
+                            {
+                                Id = "music-player-installed",
+                                Name = service.DisplayName,
+                                Description = $"Music player service: {service.ServiceName}",
+                                Version = "1.0.0",
+                                Author = "Windows Service",
+                                IsInstalled = true,
+                                IsEnabled = false,
+                                DisplayOrder = 10,
+                                ApiPort = 9091,
+                                Settings = new Dictionary<string, object>
+                                {
+                                    { "ServiceName", service.ServiceName },
+                                    { "ShowNowPlaying", true },
+                                    { "ShowAlbumArt", true }
+                                }
+                            };
+                            _addons.Add(musicAddon);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error scanning Windows services: {ex.Message}");
             }
         }
 
