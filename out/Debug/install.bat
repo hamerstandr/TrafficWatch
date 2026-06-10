@@ -1,1 +1,0 @@
-ServerTrafice.exe --install
