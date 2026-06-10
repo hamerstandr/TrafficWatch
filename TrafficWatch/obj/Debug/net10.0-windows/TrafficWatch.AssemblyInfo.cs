@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrafficWatch")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e797e3b129ce171750926bcf63e6927ea66e9eb3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abab96cd126236004a6eb72d1c351251450b2a22")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrafficWatch")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrafficWatch")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

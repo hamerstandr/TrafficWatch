@@ -86,7 +86,10 @@
         },
         "runtime": {
           "bin/placeholder/VirtualDesktop.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       },
       "VirtualDesktop.WPF/1.0.0": {
         "type": "project",
@@ -99,7 +102,10 @@
         },
         "runtime": {
           "bin/placeholder/VirtualDesktop.WPF.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       }
     }
   },

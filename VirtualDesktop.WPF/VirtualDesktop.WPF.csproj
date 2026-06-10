@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>WindowsDesktop</RootNamespace>
     <AssemblyName>VirtualDesktop.WPF</AssemblyName>
+	  <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

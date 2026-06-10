@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\hamed-lab\\Documents\\GitHub\\TrafficWatch\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AB848ECD-76AA-41C0-B63D-86A8591B25AA}|VirtualDesktop\\VirtualDesktop.csproj|c:\\users\\hamed-lab\\documents\\github\\trafficwatch\\virtualdesktop\\internal\\rawwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB848ECD-76AA-41C0-B63D-86A8591B25AA}|VirtualDesktop\\VirtualDesktop.csproj|solutionrelative:virtualdesktop\\internal\\rawwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9DD597C6-065A-4764-A96C-1B18C4EDED78}|VirtualDesktop.WPF\\VirtualDesktop.WPF.csproj|c:\\users\\hamed-lab\\documents\\github\\trafficwatch\\virtualdesktop.wpf\\virtualdesktop.wpf.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9DD597C6-065A-4764-A96C-1B18C4EDED78}|VirtualDesktop.WPF\\VirtualDesktop.WPF.csproj|solutionrelative:virtualdesktop.wpf\\virtualdesktop.wpf.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{499A505B-CDF3-4220-9914-F09F3097454F}|TrafficWatch\\TrafficWatch.csproj|c:\\users\\hamed-lab\\documents\\github\\trafficwatch\\trafficwatch\\trafficwatch.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{499A505B-CDF3-4220-9914-F09F3097454F}|TrafficWatch\\TrafficWatch.csproj|solutionrelative:trafficwatch\\trafficwatch.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AB848ECD-76AA-41C0-B63D-86A8591B25AA}|VirtualDesktop\\VirtualDesktop.csproj|c:\\users\\hamed-lab\\documents\\github\\trafficwatch\\virtualdesktop\\properties\\settings.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -18,11 +22,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VirtualDesktop.WPF",
+              "DocumentMoniker": "C:\\Users\\hamed-lab\\Documents\\GitHub\\TrafficWatch\\VirtualDesktop.WPF\\VirtualDesktop.WPF.csproj",
+              "RelativeDocumentMoniker": "VirtualDesktop.WPF\\VirtualDesktop.WPF.csproj",
+              "ToolTip": "C:\\Users\\hamed-lab\\Documents\\GitHub\\TrafficWatch\\VirtualDesktop.WPF\\VirtualDesktop.WPF.csproj",
+              "RelativeToolTip": "VirtualDesktop.WPF\\VirtualDesktop.WPF.csproj",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-10T14:25:58.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "TrafficWatch",
+              "DocumentMoniker": "C:\\Users\\hamed-lab\\Documents\\GitHub\\TrafficWatch\\TrafficWatch\\TrafficWatch.csproj",
+              "RelativeDocumentMoniker": "TrafficWatch\\TrafficWatch.csproj",
+              "ToolTip": "C:\\Users\\hamed-lab\\Documents\\GitHub\\TrafficWatch\\TrafficWatch\\TrafficWatch.csproj",
+              "RelativeToolTip": "TrafficWatch\\TrafficWatch.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-10T14:20:59.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Settings.Designer.cs",
               "DocumentMoniker": "C:\\Users\\hamed-lab\\Documents\\GitHub\\TrafficWatch\\VirtualDesktop\\Properties\\Settings.Designer.cs",
               "RelativeDocumentMoniker": "VirtualDesktop\\Properties\\Settings.Designer.cs",
@@ -31,19 +61,6 @@
               "ViewState": "AgIAACYAAAAAAAAAAAAewDAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-09T16:00:20.356Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RawWindow.cs",
-              "DocumentMoniker": "C:\\Users\\hamed-lab\\Documents\\GitHub\\TrafficWatch\\VirtualDesktop\\Internal\\RawWindow.cs",
-              "RelativeDocumentMoniker": "VirtualDesktop\\Internal\\RawWindow.cs",
-              "ToolTip": "C:\\Users\\hamed-lab\\Documents\\GitHub\\TrafficWatch\\VirtualDesktop\\Internal\\RawWindow.cs",
-              "RelativeToolTip": "VirtualDesktop\\Internal\\RawWindow.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T15:56:32.474Z",
               "EditorCaption": ""
             }
           ]
