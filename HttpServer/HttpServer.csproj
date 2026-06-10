@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>HttpServer</RootNamespace>
     <AssemblyName>HttpServer</AssemblyName>
+	  <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
