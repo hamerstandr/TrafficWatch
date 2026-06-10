@@ -17,7 +17,7 @@ namespace WindowsDesktop.Interop
 
 		public object ComObject { get; }
 
-		private protected ComInterfaceWrapperBase(ComInterfaceAssembly assembly, string comInterfaceName = null, Guid? service = null)
+		private protected ComInterfaceWrapperBase(ComInterfaceAssembly assembly, string? comInterfaceName = null, Guid? service = null)
 		{
 			var (type, instance) = assembly.CreateInstance(comInterfaceName ?? this.GetType().GetComInterfaceNameIfWrapper(), service);
 
@@ -26,7 +26,7 @@ namespace WindowsDesktop.Interop
 			this.ComObject = instance;
 		}
 
-		private protected ComInterfaceWrapperBase(ComInterfaceAssembly assembly, object comObject, string comInterfaceName = null)
+		private protected ComInterfaceWrapperBase(ComInterfaceAssembly assembly, object comObject, string? comInterfaceName = null)
 		{
 			this.ComInterfaceAssembly = assembly;
 			this.ComInterfaceType = assembly.GetType(comInterfaceName ?? this.GetType().GetComInterfaceNameIfWrapper());
@@ -36,10 +36,10 @@ namespace WindowsDesktop.Interop
 		protected static object[] Args(params object[] args)
 			=> args;
 
-		protected void Invoke(object[] parameters = null, [CallerMemberName] string methodName = "")
-			=> this.Invoke<object>(parameters, methodName);
+		protected void Invoke(object?[]? parameters = null, [CallerMemberName] string methodName = "")
+			=> this.Invoke<object?>(parameters, methodName);
 
-		protected T Invoke<T>(object[] parameters = null, [CallerMemberName] string methodName = "")
+		protected T? Invoke<T>(object?[]? parameters = null, [CallerMemberName] string methodName = "")
 		{
 			if (!this._methods.TryGetValue(methodName, out var methodInfo))
 			{
@@ -58,7 +58,7 @@ namespace WindowsDesktop.Interop
 			catch (TargetInvocationException ex) when (ex.InnerException != null)
 			{
 				//throw ex.InnerException;
-				return (T)methodInfo.Invoke(null,null);
+				return (T?)(object?)methodInfo.Invoke(null,null);
 			}
 		}
 	}

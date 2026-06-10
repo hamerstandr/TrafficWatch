@@ -1,45 +1,88 @@
-```
-# Compiled and binary files
-*.pyc
-__pycache__/
-*.class
-*.o
-*.obj
-*.exe
+# Build artifacts
+bin/
+obj/
 *.dll
+*.exe
+*.pdb
 *.so
 *.a
+*.o
+*.obj
 *.out
 
 # Dependencies
+packages/
 node_modules/
-venv/
-.venv/
+vendor/
+
+# IDE files
+.vs/
+.idea/
+*.userprefs
+*.suo
+*.user
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.pidb
+*.metadata
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+*.tmp
+
+# Environment
 .env
 .env.local
 *.env.*
 
-# Build artifacts
-dist/
-build/
-target/
-.mypy_cache/
-.pytest_cache/
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+.directory
+*.nfs*
+*.swp
+*.swo
+
+# Coverage
 coverage/
 htmlcov/
 .coverage
 
-# Editors and IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-*.tmp
+# MyPy
+.mypy_cache/
+.pytest_cache/
 
-# System files
-.DS_Store
-Thumbs.db
-*.log
+# Distribution / packaging
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+*.tar.gz
+*.whl
+
+# Gradle
+.gradle/
+build/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*$pycache$*
 
 # Compressed files
 *.zip
@@ -64,4 +107,3 @@ Thumbs.db
 *.tar.bz2
 *.tar.xz
 *.tar.zst
-```

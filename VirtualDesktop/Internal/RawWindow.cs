@@ -8,9 +8,9 @@ namespace WindowsDesktop.Internal
 {
 	internal abstract class RawWindow
 	{
-		public string Name { get; set; }
+		public string Name { get; set; } = string.Empty;
 
-		public HwndSource Source { get; private set; }
+		public HwndSource? Source { get; private set; }
 
 		public IntPtr Handle => this.Source?.Handle ?? IntPtr.Zero;
 

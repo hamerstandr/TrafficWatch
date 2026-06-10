@@ -49,11 +49,11 @@ namespace HttpServer.Models
                 this.setContent(value, encoding: Encoding.UTF8);
             }
         }
-        public void setContent(string content, Encoding encoding = null)
+        public void setContent(string? content, Encoding? encoding = null)
         {
             if (encoding == null)
             {
-                encoding = Encoding.UTF8;
+                encoding ??= Encoding.UTF8;
             }
             Content = encoding.GetBytes(content);
         }

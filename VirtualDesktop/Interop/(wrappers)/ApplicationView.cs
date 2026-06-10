@@ -9,15 +9,15 @@ namespace WindowsDesktop.Interop
 	[ComInterfaceWrapper]
 	internal class ApplicationView : ComInterfaceWrapperBase
 	{
-		public ApplicationView(ComInterfaceAssembly assembly, object comObject, string comInterfaceName = null)
+		public ApplicationView(ComInterfaceAssembly assembly, object comObject, string? comInterfaceName = null)
 			: base(assembly, comObject, comInterfaceName) { }
 
 		public string GetAppUserModelId()
 		{
 			var param = Args((string)null);
-			this.Invoke(param);
+			this.Invoke<object?>(param);
 
-			return (string)param[0];
+			return (string?)param[0];
 		}
 	}
 

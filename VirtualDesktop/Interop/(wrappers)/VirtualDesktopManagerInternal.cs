@@ -14,7 +14,7 @@ namespace WindowsDesktop.Interop
 
 		public void MoveViewToDesktop(ApplicationView pView, VirtualDesktop desktop)
 		{
-			this.Invoke(Args(pView.ComObject, desktop.ComObject));
+			this.Invoke<object?>(Args(pView.ComObject, desktop.ComObject));
 		}
 
 		public VirtualDesktop GetCurrentDesktop()
@@ -42,7 +42,7 @@ namespace WindowsDesktop.Interop
 
 		public void SwitchDesktop(VirtualDesktop desktop)
 		{
-			this.Invoke(Args(desktop.ComObject));
+			this.Invoke<object?>(Args(desktop.ComObject));
 		}
 
 		public VirtualDesktop CreateDesktopW()
@@ -52,7 +52,7 @@ namespace WindowsDesktop.Interop
 
 		public void RemoveDesktop(VirtualDesktop pRemove, VirtualDesktop pFallbackDesktop)
 		{
-			this.Invoke(Args(pRemove.ComObject, pFallbackDesktop.ComObject));
+			this.Invoke<object?>(Args(pRemove.ComObject, pFallbackDesktop.ComObject));
 		}
 
 		public VirtualDesktop FindDesktop(ref Guid desktopId)
@@ -60,7 +60,7 @@ namespace WindowsDesktop.Interop
 			return this.GetDesktop(Args(desktopId));
 		}
 
-		private VirtualDesktop GetDesktop(object[] parameters = null, [CallerMemberName] string methodName = "")
+		private VirtualDesktop GetDesktop(object?[]? parameters = null, [CallerMemberName] string methodName = "")
 			=> VirtualDesktopCache.GetOrCreate(this.Invoke<object>(parameters, methodName));
 	}
 }
