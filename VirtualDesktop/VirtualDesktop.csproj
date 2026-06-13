@@ -17,7 +17,7 @@
     <AssemblyVersion>3.0.0</AssemblyVersion>
     <AssemblyFileVersion>3.0.0</AssemblyFileVersion>
     <InformationalVersion>3.0.0-beta1</InformationalVersion>
-    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
