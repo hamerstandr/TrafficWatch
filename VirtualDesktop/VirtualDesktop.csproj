@@ -6,7 +6,18 @@
     <RootNamespace>WindowsDesktop</RootNamespace>
     <AssemblyName>VirtualDesktop</AssemblyName>
     <LangVersion>latest</LangVersion>
-	  <UseWPF>true</UseWPF>
+    <UseWPF>true</UseWPF>
+    
+    <!-- Assembly Information -->
+    <AssemblyTitle>VirtualDesktop</AssemblyTitle>
+    <AssemblyCompany>grabacr.net</AssemblyCompany>
+    <AssemblyProduct>VirtualDesktop</AssemblyProduct>
+    <AssemblyDescription>C# wrapper for IVirtualDesktopManager on Windows 10.</AssemblyDescription>
+    <AssemblyCopyright>Copyright © 2018 Manato KAMEYA</AssemblyCopyright>
+    <AssemblyVersion>3.0.0</AssemblyVersion>
+    <AssemblyFileVersion>3.0.0</AssemblyFileVersion>
+    <InformationalVersion>3.0.0-beta1</InformationalVersion>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
